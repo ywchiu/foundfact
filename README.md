@@ -1,5 +1,7 @@
 # FoundFact 查證助手
 
+**English** · [繁體中文](README.zh-TW.md)
+
 **A scam check that lives in your feed.** FoundFact is a Chrome extension and web app. It flags likely scam
 posts as you scroll Facebook and Threads. Click **Why?** and a Meta Muse agent investigates that post live,
 searching the web, matching it against known scams and reading the post's images. You get back a short report
