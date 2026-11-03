@@ -1,0 +1,15 @@
+== pre-flight: is_scam_like (noul), 821 units, 738 groups
+   teacher answers: no 719, yes 102  (majority 88%)
+   teacher unsure (top probability < 0.6): 0%
+   unit length: median 157 tokens, 2% hit the 1,024 window
+
+   readout      ms   kappa  minority recall  symmetric: coverage  one-sided: coverage (misses)
+   layer 4       5   0.676            0.686                   0%                     0% (-)
+   layer 8      10   0.626            0.637                   0%                     0% (-)
+   layer 12     16   0.718            0.745                   0%                    64% (4)
+   final        29   0.649            0.657                   0%                    46% (2)
+
+== verdict for is_scam_like
+   GRADUATES ONE-SIDED at layer 12: ~64% answered 'no' locally, 4 of 102 teacher 'yes' missed; ~858 ms/item vs 2000 backend-only. Route it one-sided.
+
+wrote /Users/david/project/fraud_detection/data/teacher/is_scam_like.preflight.json

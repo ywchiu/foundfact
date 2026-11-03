@@ -1,0 +1,550 @@
+{
+  "top_logprobs": 0,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "service_tier": "auto",
+  "model": "muse-spark-1.3",
+  "reasoning": {
+    "effort": "high"
+  },
+  "background": false,
+  "tools": [
+    {
+      "type": "web_search"
+    }
+  ],
+  "tool_choice": "auto",
+  "truncation": "disabled",
+  "id": "resp_6ae843ab9a3992af7bbe48bc",
+  "object": "response",
+  "status": "completed",
+  "created_at": 1793606571.0,
+  "completed_at": 1793606603.0,
+  "error": null,
+  "incomplete_details": null,
+  "output": [
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_bdd64b52-365c-4a16-8f0d-ba76b1f8096c",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "rs_da2fdc71-c4e4-4436-adc3-2300816a6990",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "正在幫你查證這則飆股群組傳聞，我來搜尋相關資料。",
+          "annotations": [],
+          "logprobs": []
+        }
+      ],
+      "phase": "commentary",
+      "status": "completed"
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_2878902c-03c0-486e-8a95-985858a1bce6",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "query": "台積電 董事長 魏哲家 LINE群組 飆股 詐騙"
+      },
+      "results": [
+        {
+          "type": "text_result",
+          "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心",
+          "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "詐騙進化到這地步？張忠謀、魏哲家「揪你投資」？官方：沒這回事｜#寰宇新聞 - YouTube",
+          "url": "https://www.youtube.com/watch?v=kV8RN3ZJo6E",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "株連九族！內鬼慘了！台積電2奈米洩密案大爆發：連坐五級、司法鐵娘子出動，魏哲家這招「殺雞儆猴」簡直太狠了！🔥 - YouTube",
+          "url": "https://www.youtube.com/watch?v=onOr54KhEMM",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "力晶投控告「揪團賣股」發起人！林緯程是誰？每股50元收購方案為何惹議？|數位時代 BusinessNext",
+          "url": "https://www.bnext.com.tw/article/92877/powerchip-pihc-lawsuit-stake-sale-control-dispute",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "株連九族、連坐五級！台積電 2 奈米洩密案祭出史上最嚴厲懲處！司法鐵娘子出手，魏哲家殺雞儆猴太狠震懾全台！#台積電 #台灣 - YouTube",
+          "url": "https://www.youtube.com/watch?v=vLqBnPv8BJM",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "誆「名師帶賺」詐千萬　Line群組騙投資虛擬幣｜#鏡新聞 - YouTube",
+          "url": "https://www.youtube.com/watch?v=C6iPcbD4kwo",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "真的! 魏哲家曾高喊\"多買股票\" 台積電飆2025元天價－民視新聞",
+          "url": "https://www.youtube.com/shorts/Eo13jIeR8hY",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "嗆魏哲家下台道歉！台大副教授預言台積電跌破500　股民見新天價朝聖「疑悄悄刪文」❗️ - YouTube",
+          "url": "https://www.youtube.com/watch?v=H0pJjeLpLys",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "台積電加碼投資內幕！美商務部長親爆致電「威脅」魏哲家",
+          "url": "https://www.btcc.com/zh-TW/square/ltnTW/873205",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "魏哲家沒騙人！台積電H1營收破2兆 創3大紀錄 - YouTube",
+          "url": "https://www.youtube.com/watch?v=pyqyOOCUaYk",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "前台積電員工成詐團首腦　非法吸金65億｜#shorts #鏡新聞",
+          "url": "https://www.youtube.com/shorts/DXvijsqqe1E",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "【全程字幕】\"客戶老闆們很有錢\"魏哲家法說會\"一句話\" 讓台股漲逾600點!台積電新天價1740元! - YouTube",
+          "url": "https://youtube.com/watch?v=arihCizXt5k",
+          "snippet": ""
+        }
+      ]
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_dd7a23e4-b520-46b9-99be-f9f18ecd1072",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "rs_e7ed8525-052c-41d8-a077-8ef7c03c0dd6",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "已找到初步線索，我來打開查核中心的完整報告確認。",
+          "annotations": [],
+          "logprobs": []
+        }
+      ],
+      "phase": "commentary",
+      "status": "completed"
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_ee1fce36-b31a-42a7-8f0e-4db8e40272b1",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/"
+      },
+      "results": []
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_56831077-9fa4-455d-b7f0-510dbf5d163e",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "rs_0a743f63-e1f5-45ca-98a8-1a868997a8a6",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "查核中心資料已確認，我再搜尋台積電官方聲明和警方防詐資訊補強。",
+          "annotations": [],
+          "logprobs": []
+        }
+      ],
+      "phase": "commentary",
+      "status": "completed"
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_caaf0b4c-d2fc-455e-ac9d-5b29834cb4e6",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "query": "台積電 聲明 魏哲家 張忠謀 沒有經營社群帳號 詐騙"
+      },
+      "results": [
+        {
+          "type": "text_result",
+          "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心",
+          "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "詐騙進化到這地步？張忠謀、魏哲家「揪你投資」？官方：沒這回事｜#寰宇新聞 - YouTube",
+          "url": "https://www.youtube.com/watch?v=kV8RN3ZJo6E",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "<AAFEA5F35FA470A4DFB642C4462E6F6474>",
+          "url": "https://www.ocac.gov.tw/OCAC/File/Attach/90605973/File_595053.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "1280億的世紀謊言！小學畢業生如何騙倒台積電蔣爸？揭秘弘芯爛尾真相,深挖半導體史上最大騙局. #shorts - YouTube",
+          "url": "https://www.youtube.com/watch?v=-i5V6yRmzY8",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "前台積電員工成詐團首腦　非法吸金65億｜#shorts #鏡新聞",
+          "url": "https://www.youtube.com/shorts/DXvijsqqe1E",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "中華隊熱潮連「詐騙」也要蹭？ 揭前「台積電」員工淪詐團內幕！ - 羅旺哲 林書立 徐俊相《57爆新聞》20241129-1",
+          "url": "https://www.youtube.com/watch?v=P9xMd9CrzAk",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "【#真相對話錄 完整版】挑戰新天價！魏哲家：若要買股請繼續 台積電之父！張忠謀56歲來台逆襲創業",
+          "url": "https://www.youtube.com/watch?v=6su8t33cKnE",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "TikTok · 廖大偉",
+          "url": "https://www.tiktok.com/@seahunter209/photo/7572611257673665800?_r=1&_d=secCgYIASAHKAESPgo8ad7sHfKl8gIXmBV5YwAYIQXAHDURfA58QgzmPrn4UpDM5Nyc1EuF6%2BGCe%2Fr07x6YCUIG8oEe6fwWlKiWGgA%3D&_svg=1&aweme_type=150&checksum=683cc3175da9d27916587f06004fc5f13594ff4811eca5a0374a59e1417e394c&item_author_type=2&link_reflow_po",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "【全程字幕】蔡正元大爆台積電內幕! 台積電美國開會躲躲藏藏 魏哲家為何缺席?",
+          "url": "https://www.youtube.com/watch?v=jk84_mtCl-I",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "網路投資詐騙猖獗 平台須負連",
+          "url": "https://www.pscnet.com.tw/upload/pscnet/file/20230414103841740037.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "張忠謀、魏哲家最大難題！　台積電接班水很深",
+          "url": "https://malaysia.shafaqna.com/MY/AL/4168676",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "中華民國 115 年 8 月 13 日市場推廣部 不法人士冒用證交所董事長名義發布投資詐騙訊息 證交所籲請民眾提 高警覺",
+          "url": "https://wwwc.twse.com.tw/staticFiles/news/news/tsecnews/8a8216d69fc76da0019ffab8dee3010c.pdf",
+          "snippet": ""
+        }
+      ]
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_b08c1eb2-e7ed-4a4c-9bcf-303b245c42ec",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "query": "保證獲利 月報酬 投資詐騙 LINE群組 警政署"
+      },
+      "results": [
+        {
+          "type": "text_result",
+          "title": "＂刑事警察局＆元大金控＂反詐宣導－「假冒名人投資群組攏係騙！」 - YouTube",
+          "url": "https://www.youtube.com/watch?v=bHg4edMMyGg",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "中華民國 113 年 7 月 10 日市場推廣部 證交所解密假投資真詐財四大手法",
+          "url": "https://investoredu.twse.com.tw/Mobile_pages/..%2FFileSystem%2FFileUpload%2Faffb1bfb-467d-45c6-9e45-dfd0fa60d10e.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "好心動! 投資群組「觀望2年」 保全20萬險遭詐｜TVBS新聞 ‪@TVBSNEWS01‬ - YouTube",
+          "url": "https://www.youtube.com/watch?v=BBAgmoNh8bk",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "《假投資詐騙實例說明》參考貼文文案",
+          "url": "https://www.tax.ntpc.gov.tw/dl-6273-a8d104a5d6c2433985922ea02a71f350.html",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "《假投資詐騙實例說明》參考貼文",
+          "url": "https://www.klepb.klcg.gov.tw/wSite/public/Attachment/02614/f1708139525403.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "主打高報酬!假投資真詐欺 警攻堅逮7嫌 - YouTube",
+          "url": "https://www.youtube.com/watch?v=Fv8nOELirZ8",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "加LINE群組!金融老師是騙子 女遭詐150萬｜TVBS新聞 @TVBSNEWS01",
+          "url": "https://www.youtube.com/watch?v=qyOHIRhBLkA",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "警光",
+          "url": "https://police.npa.gov.tw/ch/app/data/doc?module=wg079&detailNo=1183659400431144960&type=s",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "【NOW先知道】警遭詐騙千萬？！這四種簡訊快封鎖！掌握三帳戶防詐法建立資金防線｜2026.07.31｜劉嘉芸、林書立 - YouTube",
+          "url": "https://www.youtube.com/watch?v=izY-N3vGxT0",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "Microsoft Word - ÍP\u0019LÕ\b@ *\u0016\nÚ",
+          "url": "https://www.futures.org.tw/file/attachmentStatic/4028859e93f86d6101940179e34a066e",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "富邦金控副總經理 蔡佩玲－投資群組詐騙＆打詐五法 - YouTube",
+          "url": "https://www.youtube.com/watch?v=GWP1RBRPgvo",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "退休銀行襄理也中招！　詐團「市場分析太專業」騙光3156萬",
+          "url": "https://malaysia.shafaqna.com/MY/AL/3954031",
+          "snippet": ""
+        }
+      ]
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_e89ed5d3-b97f-4870-8187-d6a5427dba96",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "rs_6615f68a-f77a-4edb-94e3-390db8715413",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "官方防詐資訊也找到了，我來開啟詳細頁面核實手法。",
+          "annotations": [],
+          "logprobs": []
+        }
+      ],
+      "phase": "commentary",
+      "status": "completed"
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_348a364f-e9f0-428c-bcc7-d9dde91feab9",
+      "status": "failed",
+      "action": {
+        "type": "open_page"
+      },
+      "results": []
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_4aff2130-98c6-4c85-9f7f-cd78825ca4c9",
+      "status": "completed",
+      "action": {
+        "type": "open_page",
+        "url": "https://police.npa.gov.tw/ch/app/data/doc?module=wg079&detailNo=1183659400431144960&type=s"
+      },
+      "results": []
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_16a9cded-b3bc-429c-b3c1-80a70ef0ec66",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "rs_b668e9be-bb74-423f-8c18-8d426d1523d9",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "目前證據已充足，我再補查證交所的反詐聲明。",
+          "annotations": [],
+          "logprobs": []
+        }
+      ],
+      "phase": "commentary",
+      "status": "completed"
+    },
+    {
+      "type": "web_search_call",
+      "id": "ws_call_3989b66e-a057-4fee-8ee8-64fcffc2dcce",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "query": "證交所 解密假投資真詐財四大手法 保證高獲利"
+      },
+      "results": [
+        {
+          "type": "text_result",
+          "title": "中華民國 113 年 7 月 10 日市場推廣部 證交所解密假投資真詐財四大手法",
+          "url": "https://investoredu.twse.com.tw/Mobile_pages/..%2FFileSystem%2FFileUpload%2Faffb1bfb-467d-45c6-9e45-dfd0fa60d10e.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "20260305-投教-揭秘三大金融陷阱，识破致富骗局-定稿",
+          "url": "https://www.fadfunds.com/upload/fck/userfiles/file/1773640230424-揭秘三大金融陷阱，识破致富骗局.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "【招商證券】假投,資提領不出 挽回損失資金 - 理性看投資 - Medium",
+          "url": "https://medium.com/@cz710/%E6%8B%9B%E5%95%86%E8%AD%89%E5%88%B8-%E5%81%87%E6%8A%95-%E8%B3%87%E6%8F%90%E9%A0%98%E4%B8%8D%E5%87%BA-%E6%8C%BD%E5%9B%9E%E6%90%8D%E5%A4%B1%E8%B3%87%E9%87%91-453bba57885f",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "防非宣传月——拒绝非法荐股诱惑，筑牢理性投资防线 一、典型非法活动套路",
+          "url": "https://www.cxfund.com.cn/upload/fck/userfiles/file/1781138530161-防非宣传月—拒绝非法荐股诱惑，筑牢理性投资防线.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "反詐騙宣導_鄒承恩-假投資詐騙(完整版) - YouTube",
+          "url": "https://www.youtube.com/watch?v=dvBrE3UlmOU&list=PLTpYQm9I7B0ZgO6XNxvs40k9QB2Gk-cGj&index=18",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "高獲利往往都是詐騙 - YouTube",
+          "url": "https://www.youtube.com/watch?v=vZ3DwRi9Gz4",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "AI23_0073_大專生學防騙_Tool Kit_Chn",
+          "url": "https://www.ifec.org.hk/web/common/pdf/programmes/money-management-toolkits/mm-toolkit-young-people-anti-scam-tc.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "警惕投 资诈骗",
+          "url": "https://dccadev.exemplifi.io/wp-content/uploads/2026/02/InvestmentFraud-Hawaii_Chinese_2024.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "金融詐騙層出不窮，證券商公會彙整市場常見詐騙態樣",
+          "url": "http://info.csa.org.tw/doc/%E9%87%91%E8%9E%8D%E8%A9%90%E9%A8%99%E5%B1%A4%E5%87%BA%E4%B8%8D%E7%AA%AE%EF%BC%8C%E8%AD%89%E5%88%B8%E5%95%86%E5%85%AC%E6%9C%83%E5%BD%99%E6%95%B4%E5%B8%82%E5%A0%B4%E5%B8%B8%E8%A6%8B%E8%A9%90%E9%A8%99%E6%85%8B%E6%A8%A3.pdf",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "SEC揭露假AI投資騙局，1,530萬美元蒸發 #Shorts - YouTube",
+          "url": "https://www.youtube.com/shorts/a7Gi_LnqERM",
+          "snippet": ""
+        },
+        {
+          "type": "text_result",
+          "title": "投資詐騙手法層出不窮！共好發展總會警察學員教你7招看穿「高回報」騙局！ - 共好總會の溫度",
+          "url": "https://medium.com/@lin354565/%E6%8A%95%E8%B3%87%E8%A9%90%E9%A8%99%E6%89%8B%E6%B3%95%E5%B1%A4%E5%87%BA%E4%B8%8D%E7%AA%AE-%E5%85%B1%E5%A5%BD%E7%99%BC%E5%B1%95%E7%B8%BD%E6%9C%83%E8%AD%A6%E5%AF%9F%E5%AD%B8%E5%93%A1%E6%95%99%E4%BD%A07%E6%8B%9B%E7%9C%8B%E7%A9%BF-%E9%AB%98%E5%9B%9E%E5%A0%B1-%E9%A8%99%E5%B1%80-d027779a7513",
+          "snippet": ""
+        }
+      ]
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_6ae843ab9a3992af7bbe48bc:rs_e5b6de8d-6f98-4fdb-91c6-3c9c56547134",
+      "summary": [],
+      "status": "completed"
+    },
+    {
+      "type": "message",
+      "id": "msg_fd5753a7-c427-4211-bb9d-92df0e87ff3c",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "**結論：假的，是典型的投資詐騙。不要加入、不要匯款。**\n\n網傳「台積電董事長魏哲家在LINE群組帶買飆股、保證月報酬30%」，完全不符合台積電官方說法，也符合警方、證交所列出的詐騙特徵：\n\n**1. 台積電已澄清：魏哲家沒有經營個人社群，更不會帶單報明牌**\n\n台灣事實查核中心指出，近期在Threads出現的「台積電董事長魏哲家」等財經名人帳號，宣稱要分享股市投資經驗。\n\n台積電也曾在2025年發表聲明，指出「魏哲家、台積電經營團隊、張忠謀夫婦，都沒有以個人身份經營社群」。\n\n媒體轉述台積電重大聲明更強調，創辦人張忠謀與夫人張淑芬，以及董事長魏哲家「完全沒有」使用個人身份經營任何公開社群，也從未舉辦贈書、投資課程或提供股票建議。\n所有以台積電名義揪團、送書、帶單的資訊皆為詐騙。\n\n**2. 「名人＋LINE群組＋飆股＋保證獲利」就是標準詐騙公式**\n\n查核中心發現，社群平台常有自稱科技大廠員工或退休工程師，宣稱要分享股市明牌或公司內幕，這其實是典型的投資詐騙，通常是透過私訊邀請民眾加入群組，進一步誘導投資、詐騙財物。\n\n證交所解密假投資真詐財四大手法：\n\n> 第一是打著名人旗號：冒用財經名人的照片或影片，引起好奇和快速獲得認同。\n> 第二是高額報酬誘惑：標榜「保證高獲利無風險」、「投資飆股穩賺不賠」等，以聳動誘人字眼置入廣告，讓人誤信為賺錢良機，其實卻是詐騙圈套。\n> 第三是用「免費領取飆股」、「免費報明牌」等話術吸引加LINE。\n\n你問的「魏哲家帶大家買飆股、保證月報酬30%」三項全中。\n\n**3. 保證獲利、穩賺不賠、飆股、零風險 = 詐騙關鍵字**\n\n內政部警政署提醒，高獲利必定伴隨高風險，只要聽到「穩賺不賠、保證獲利、飆股、零風險」的就是詐騙關鍵字。\n\n詐騙集團大都會要求加入LINE群組，並不斷洗腦誘騙民眾投資，若被要求轉帳匯款，務必提高警覺。\n\n台灣事實查核中心2026-10-30第4375號報告也判定，這類名人分享投資經驗均為仿冒假帳號，呼籲避免私訊聯絡，以免踏入詐騙陷阱。\n\n**怎麼辦？**\n\n* 不要加群組、不要點不明連結、不要下載對方給的APP\n* 不要匯款、面交\n* 可到內政部警政署165全民防騙網查證，或撥165",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+              "start_index": 133,
+              "end_index": 187,
+              "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心"
+            },
+            {
+              "type": "url_citation",
+              "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+              "start_index": 190,
+              "end_index": 240,
+              "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心"
+            },
+            {
+              "type": "url_citation",
+              "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+              "start_index": 383,
+              "end_index": 466,
+              "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心"
+            },
+            {
+              "type": "url_citation",
+              "url": "https://tfc-taiwan.org.tw/fact-check-reports/terry-gou-tsai-wei-investment-sharing-fake-social-media-accounts/",
+              "start_index": 793,
+              "end_index": 858,
+              "title": "近期社群出現郭台銘、魏哲家分享投資，都是虛假帳號 - 台灣事實查核中心"
+            }
+          ],
+          "logprobs": []
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "instructions": null,
+  "usage": {
+    "input_tokens": 61936,
+    "input_tokens_details": {
+      "cached_tokens": 15544
+    },
+    "output_tokens": 3699,
+    "output_tokens_details": {
+      "reasoning_tokens": 2212
+    },
+    "total_tokens": 65635
+  },
+  "parallel_tool_calls": true,
+  "store": true
+}

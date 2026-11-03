@@ -1,0 +1,57 @@
+const STRINGS = {
+  zh: {
+    brand: "查證助手", hero1: "這是詐騙嗎？", hero2: "先查一下。",
+    tagline: "貼上可疑貼文或訊息，AI Agent 會自己上網查證，給你附來源的報告。",
+    input_label: "可疑內容", placeholder: "貼上貼文、簡訊或網址，也可以直接貼上截圖", analyze: "開始查證",
+    examples: "試試範例", ex_sms: "可疑簡訊", ex_invest: "投資邀請", ex_cs: "假冒客服",
+    privacy: "請先遮蔽個人資料；內容會送至 Meta Muse 與 TypeSafe Jev 分析，不會寫入資料庫。",
+    advanced: "進階設定", provider: "第一段判斷模型",
+    prov_muse: "Muse（Meta）", prov_local: "Local EmbeddingGemma 2", prov_jev: "Jev（TypeSafe）",
+    stage1: "第一段快篩", stage1_by: "判斷來源 {p} · {ms} ms",
+    label_high: "高風險", label_check: "待查證", label_none: "未見明顯風險",
+    risk_high: "高風險", risk_check: "需要查證", risk_low: "風險低",
+    claims: "逐條主張", similar: "最像的已知詐騙案例", steps: "Agent 查證過程", actions: "建議行動",
+    evidence: "證據", similarity: "相似度",
+    verdict_supported: "證據支持", verdict_refuted: "證據反駁", verdict_insufficient: "證據不足", verdict_needs_review: "需人工複核",
+    src_web: "網路", src_local_case: "已知案例", src_blocklist: "高風險名單", src_image: "圖片",
+    step_extract: "抽出主張", step_local: "比對已知案例", step_image: "讀取圖片", step_search: "網路搜尋",
+    step_judge: "比對證據", step_conclude: "產出結論",
+    err_rate: "查詢太頻繁了，請稍後再試。", err_budget: "今日查證額度已用完，明天再來。", err_generic: "查證失敗，請稍後再試。",
+    err_image: "讀不出這張圖片，請換一張或貼上文字。", err_image_big: "圖片太大了，請換一張較小的圖片。",
+    add_image: "加入截圖或圖片", add_image_hint: "點這裡選檔，或把圖片拖進來、直接貼上", remove_image: "移除圖片", image_bad: "只支援 PNG、JPEG、WebP 或 GIF 圖片。",
+    pressure: "施壓話術程度", why: "看原因", by: "by 查證助手",
+    banner_type: "這篇貼文可能是{type}詐騙", banner_link: "連結 {d} 在警政署涉詐網站名單上", banner_check: "這篇貼文有待查證的主張",
+    type_investment: "投資", type_impersonation: "冒名", type_phishing: "釣魚", type_shopping: "購物", type_romance: "交友", type_other: "",
+    hotline: "165 全民防騙網", footer: "小心求證，安心生活",
+  },
+  en: {
+    brand: "FoundFact", hero1: "Is this a scam?", hero2: "Check first.",
+    tagline: "Paste a suspicious post or message. An AI agent searches the web and gives you a sourced report.",
+    input_label: "Suspicious content", placeholder: "Paste a post, text message or link. You can paste a screenshot too", analyze: "Verify",
+    examples: "Try an example", ex_sms: "Suspicious SMS", ex_invest: "Investment invite", ex_cs: "Fake support",
+    privacy: "Remove personal details first. Content is sent to Meta Muse and TypeSafe Jev for analysis and is not saved to a database.",
+    advanced: "Advanced", provider: "First pass model",
+    stage1: "First pass", stage1_by: "Answered by {p} · {ms} ms",
+    label_high: "High risk", label_check: "Needs checking", label_none: "No obvious risk",
+    risk_high: "High risk", risk_check: "Needs checking", risk_low: "Low risk",
+    claims: "Claims", similar: "Most similar known scams", steps: "Agent investigation", actions: "What to do",
+    evidence: "Evidence", similarity: "similarity",
+    verdict_supported: "Supported by evidence", verdict_refuted: "Refuted by evidence", verdict_insufficient: "Insufficient evidence", verdict_needs_review: "Needs human review",
+    src_web: "Web", src_local_case: "Known case", src_blocklist: "Blocklist", src_image: "Image",
+    step_extract: "Extract claims", step_local: "Match known cases", step_image: "Read image", step_search: "Web search",
+    step_judge: "Weigh evidence", step_conclude: "Conclude",
+    err_rate: "Too many checks in the last hour. Please try again later.", err_budget: "Today's checks are used up. Please come back tomorrow.", err_generic: "The check could not finish. Please try again.",
+    err_image: "We could not read this image. Try another one or paste the text.", err_image_big: "This image is too large. Please try a smaller one.",
+    add_image: "Add a screenshot or image", add_image_hint: "Click to choose a file, drag one here or paste it", remove_image: "Remove image", image_bad: "Only PNG, JPEG, WebP or GIF images are supported.",
+    pressure: "Pressure tactics", why: "Why?", by: "by FoundFact",
+    banner_type: "This post may be {type} scam", banner_link: "Link {d} is on Taiwan police's fraud-site list", banner_check: "This post makes claims worth checking",
+    type_investment: "an investment", type_impersonation: "an impersonation", type_phishing: "a phishing", type_shopping: "a shopping", type_romance: "a romance", type_other: "a",
+    hotline: "Taiwan 165 anti-fraud", footer: "Verify before you act",
+  },
+};
+
+export function t(key, lang = "zh", vars = {}) {
+  let s = STRINGS[lang]?.[key] ?? STRINGS.zh[key] ?? key;
+  for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, String(v));
+  return s;
+}

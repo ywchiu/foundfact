@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy · FoundFact 查證助手</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/shared/report.css?v=r8">
+  <link rel="stylesheet" href="/site.css?v=r8">
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/"><img src="/favicon.png" alt="" width="20" height="20"><span>FoundFact</span><span class="brand-zh">查證助手</span></a>
+  </nav>
+<main class="wrap doc body-3">
+  <h1 class="heading-3">隱私權政策 · Privacy Policy</h1>
+  <p class="caption-2 muted">最後更新：2026-11-02 · 大數軟體有限公司 LargitData</p>
+
+  <h2 class="heading-6">我們處理哪些資料</h2>
+  <ul>
+    <li>Chrome 擴充功能只讀取你在 Facebook 與 Threads 動態牆上「看得到的公開貼文」的文字、作者名稱、貼文中的連結與圖片網址，用於判斷是否疑似詐騙。</li>
+    <li>網頁版只處理你主動貼上的內容。</li>
+    <li>我們不讀取私訊、不讀取帳號資料、不追蹤瀏覽紀錄，也不儲存可識別個人的資料。</li>
+  </ul>
+  <h2 class="heading-6">資料送往哪裡</h2>
+  <ul>
+    <li>貼文內容會送到我們的後端，再交給 Meta Muse（Meta Model API，Standard 方案，資料不用於訓練 Meta 模型）進行判斷與網路查證。</li>
+    <li>第一段快篩若選用 Jev（TypeSafe），貼文文字會經由 OpenRouter 送至 TypeSafe；伺服器比對已知詐騙案例時也會使用 Jev。</li>
+    <li>貼文中的短網址（如 reurl.cc、bit.ly）會由我們的伺服器追蹤轉址，取得最終網址，再比對內政部警政署公開的涉詐網站名單；只送出 HEAD 請求，不載入網頁內容。</li>
+    <li>為防止濫用，後端會暫存相同內容的查證結果最多 24 小時，並以 IP 做頻率限制；不寫入長期資料庫。</li>
+  </ul>
+  <h2 class="heading-6">English summary</h2>
+  <p>The extension reads only the visible text, author name, links and image URLs of public posts in your Facebook/Threads feed, to flag likely scams. Content is sent to our backend and to Meta Muse (Standard tier, not used to train Meta models) for analysis and web verification; and to TypeSafe Jev via OpenRouter when Jev runs the first pass (if selected) or matches known scam cases. We do not read messages or account data, do not track browsing, resolve short links server-side (HEAD requests only) to check the final domain against Taiwan police's public fraud-domain list, and keep only a 24-hour result cache and per-IP rate-limit counters in memory.</p>
+  <p>Contact: david@largitdata.com</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+ "name": "is_scam_like",
+ "type": "noul",
+ "n": 821,
+ "teacher_counts": [
+  719,
+  102
+ ],
+ "best": "layer 12",
+ "readouts": {
+  "layer 4": {
+   "ms": 5.486985420575365,
+   "kappa": 0.6756314378439394,
+   "minority_recall": 0.6862745098039216,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2005.4869854205754
+  },
+  "layer 8": {
+   "ms": 10.498580209678039,
+   "kappa": 0.6260373222495834,
+   "minority_recall": 0.6372549019607843,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2010.498580209678
+  },
+  "layer 12": {
+   "ms": 15.562377710593864,
+   "kappa": 0.7177569065331886,
+   "minority_recall": 0.7450980392156863,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.6431181485992692,
+   "one_sided_misses": 4,
+   "coverage": 0.6431181485992692,
+   "ms_per_item": 857.9497102319092
+  },
+  "final": {
+   "ms": 29.459943959955126,
+   "kappa": 0.6494099896089846,
+   "minority_recall": 0.6568627450980392,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.46041412911084045,
+   "one_sided_misses": 2,
+   "coverage": 0.46041412911084045,
+   "ms_per_item": 1200.7145115604424
+  }
+ }
+}

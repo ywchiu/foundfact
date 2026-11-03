@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoundFact: paste a post, get a sourced scam check</title>
+  <meta name="description" content="Paste a suspicious post, text message or link. A Meta Muse agent searches the web and returns a scam check report with a source for every verdict.">
+  <meta property="og:title" content="FoundFact 查證助手">
+  <meta property="og:description" content="Paste a suspicious post. An AI agent checks it against fact checks, police fraud lists and the web, with sources.">
+  <meta property="og:image" content="https://foundfact.infominer.io/og.png">
+  <meta property="og:url" content="https://foundfact.infominer.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preload" href="/shared/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/shared/report.css?v=r8">
+  <link rel="stylesheet" href="/site.css?v=r9">
+</head>
+<body>
+  <a class="skip" href="#main" data-c="skip">Skip to content</a>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/" aria-current="page"><img src="/favicon.png" alt="" width="20" height="20"><span>FoundFact</span><span class="brand-zh">查證助手</span></a>
+    <div class="nav-links">
+      <a href="#how" data-c="nav_how"></a>
+      <a href="#faq" data-c="nav_faq"></a>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero wrap">
+      <div class="tool">
+        <h1 class="hero-title"><span data-c="hero_a"></span><br><span data-c="hero_b"></span></h1>
+        <p class="hero-sub body-3" data-c="hero_sub"></p>
+        <label for="text" class="title-4" data-i18n="input_label"></label>
+        <textarea id="text" maxlength="4000" aria-describedby="count err"></textarea>
+        <div class="attach">
+          <button class="drop" type="button" id="add-img"><span class="drop-icon" data-icon="image"></span>
+            <span class="drop-text"><span class="title-4" data-i18n="add_image"></span><span class="caption-5 muted" data-i18n="add_image_hint"></span></span></button>
+          <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+          <div class="thumb" id="thumb" hidden><img alt=""><button type="button" id="rm-img" class="thumb-rm"><span data-icon="x-circle"></span></button></div>
+        </div>
+        <div class="row">
+          <div class="chips"><span class="caption-5" data-i18n="examples"></span>
+            <button class="chip" type="button" data-ex="sms" data-i18n="ex_sms"></button>
+            <button class="chip" type="button" data-ex="invest" data-i18n="ex_invest"></button>
+            <button class="chip" type="button" data-ex="cs" data-i18n="ex_cs"></button>
+          </div>
+          <span id="count" class="caption-5">0 / 4000</span>
+        </div>
+        <p id="err" class="field-err caption-5" role="alert" hidden></p>
+        <button class="go button-md" id="go" type="button"><span data-i18n="analyze"></span><span class="go-icon" data-icon="arrow-right"></span></button>
+        <p class="proof-line caption-5" data-c="hero_proof"></p>
+        <details class="adv">
+          <summary class="caption-2" data-i18n="advanced"></summary>
+          <label for="provider" class="caption-2" data-i18n="provider"></label>
+          <select id="provider">
+            <option value="muse" data-i18n="prov_muse"></option>
+            <option value="jev" data-i18n="prov_jev"></option>
+            <option value="local" data-i18n="prov_local"></option>
+          </select>
+          <p class="caption-5 muted" data-i18n="privacy"></p>
+        </details>
+      </div>
+      <section class="panel" aria-live="polite" aria-label="Report">
+        <div id="empty" class="empty">
+          <h2 class="title-3" data-c="empty_title"></h2>
+          <ul>
+            <li><span data-icon="magnifying-glass"></span><span class="body-6" data-c="empty_1"></span></li>
+            <li><span data-icon="scales"></span><span class="body-6" data-c="empty_2"></span></li>
+            <li><span data-icon="file-text"></span><span class="body-6" data-c="empty_3"></span></li>
+          </ul>
+        </div>
+        <div id="stage1"></div>
+        <div id="steps"></div>
+        <div id="report"></div>
+      </section>
+    </section>
+
+    <section id="how" class="wrap section reveal">
+      <h2 class="heading-3" data-c="how_title"></h2>
+      <div class="how">
+        <article class="how-row">
+          <div class="how-text"><span class="num caption-3">01</span><h3 class="heading-6" data-c="how_1_t"></h3><p class="body-3 muted" data-c="how_1_b"></p></div>
+          <div class="how-visual" aria-hidden="true">
+            <div class="mock-post"><div class="mock-banner"><span data-icon="warning-circle"></span><span data-c="demo_banner"></span><span class="mock-why" data-c="demo_why"></span></div>
+              <div class="mock-lines"><i></i><i></i><i></i></div></div>
+          </div>
+        </article>
+        <article class="how-row flip">
+          <div class="how-text"><span class="num caption-3">02</span><h3 class="heading-6" data-c="how_2_t"></h3><p class="body-3 muted" data-c="how_2_b"></p></div>
+          <div class="how-visual" aria-hidden="true">
+            <ol class="vf-steps mock-steps">
+              <li class="vf-step vf-done"><span class="vf-step-icon" data-icon="check-circle"></span><div><div class="vf-step-title" data-i18n="step_extract"></div></div></li>
+              <li class="vf-step vf-done"><span class="vf-step-icon" data-icon="check-circle"></span><div><div class="vf-step-title" data-i18n="step_local"></div></div></li>
+              <li class="vf-step vf-running"><span class="vf-step-icon" data-icon="magnifying-glass"></span><div><div class="vf-step-title" data-i18n="step_search"></div></div></li>
+            </ol>
+          </div>
+        </article>
+        <article class="how-row">
+          <div class="how-text"><span class="num caption-3">03</span><h3 class="heading-6" data-c="how_3_t"></h3><p class="body-3 muted" data-c="how_3_b"></p></div>
+          <div class="how-visual" aria-hidden="true">
+            <div class="vf-claim mock-claim"><span class="vf-tag vf-v-refuted" data-i18n="verdict_refuted"></span><span class="vf-claim-text" data-c="demo_claim"></span>
+              <ul class="vf-cites"><li><span class="vf-src">[w1]</span> <span class="mock-link" data-c="demo_src"></span></li></ul></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section tagline-wrap" aria-label="Tagline">
+      <p class="tagline heading-2" id="tagline"></p>
+    </section>
+
+    <section id="faq" class="wrap section reveal">
+      <h2 class="heading-3" data-c="faq_title"></h2>
+      <dl class="faq">
+        <div><dt class="title-2" data-c="q1"></dt><dd class="body-3 muted" data-c="a1"></dd></div>
+        <div><dt class="title-2" data-c="q2"></dt><dd class="body-3 muted" data-c="a2"></dd></div>
+        <div><dt class="title-2" data-c="q3"></dt><dd class="body-3 muted" data-c="a3"></dd></div>
+        <div><dt class="title-2" data-c="q4"></dt><dd class="body-3 muted" data-c="a4"></dd></div>
+        <div><dt class="title-2" data-c="q5"></dt><dd class="body-3 muted" data-c="a5"></dd></div>
+        <div><dt class="title-2" data-c="q6"></dt><dd class="body-3 muted" data-c="a6"></dd></div>
+      </dl>
+    </section>
+
+    <section id="ext" class="wrap section reveal">
+      <div class="ext">
+        <span class="ext-icon" data-icon="puzzle-piece"></span>
+        <div><h2 class="heading-5" data-c="ext_title"></h2><p class="body-3 muted" data-c="ext_body"></p></div>
+        <a class="ext-cta button-sm" href="#main" data-c="ext_cta"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot caption-5">
+    <span data-c="foot_by"></span>
+    <a href="/privacy" data-c="foot_privacy"></a>
+    <a href="https://165.npa.gov.tw/" target="_blank" rel="noopener" data-i18n="hotline"></a>
+    <span class="muted" data-c="foot_data"></span>
+  </footer>
+  <script type="module" src="/app.js?v=r8"></script>
+</body>
+</html>

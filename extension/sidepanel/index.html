@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoundFact</title>
+  <link rel="stylesheet" href="../shared/report.css">
+  <style>
+    body { margin: 0; background: var(--vf-bg); color: var(--vf-text); font-family: var(--vf-font); font-size: 14px; line-height: 20px; -webkit-font-smoothing: antialiased; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: var(--s-100) var(--s-200); border-bottom: 1px solid var(--vf-line);
+      background: color-mix(in srgb, var(--vf-bg) 80%, transparent); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 1; }
+    header strong { font-size: 16px; line-height: 24px; font-weight: 600; }
+    header a { color: var(--vf-muted); font-size: 12px; line-height: 16px; text-underline-offset: 3px; transition: color 300ms var(--vf-ease); }
+    header a:hover { color: var(--vf-text); }
+    .tools { display: flex; gap: var(--s-100); align-items: center; }
+    #lang { border: 1px solid var(--vf-line); background: var(--vf-bg); color: var(--vf-text); border-radius: var(--r-lg); padding: var(--s-25) var(--s-75);
+      font: inherit; font-size: 12px; line-height: 16px; font-weight: 600; cursor: pointer; transition: background-color 300ms var(--vf-ease); }
+    #lang:hover { background: var(--vf-surface); }
+    :focus-visible { outline: 2px solid var(--vf-text); outline-offset: 2px; }
+    main { padding: var(--s-200); }
+    .post { background: var(--vf-surface); border-radius: var(--r-xl); padding: var(--s-100); color: var(--vf-muted); font-size: 14px; line-height: 20px;
+      max-height: 112px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .post b { color: var(--vf-text); font-weight: 600; }
+    h2 { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--vf-muted); margin: var(--s-300) 0 var(--s-75); }
+    .empty { color: var(--vf-muted); margin: var(--s-200) 0 0; }
+    #report { margin-top: var(--s-200); }
+  </style>
+</head>
+<body>
+  <header><strong id="title">查證助手</strong><span class="tools"><button id="lang" type="button" aria-label="Language">EN</button><a href="../options/index.html" target="_blank" id="opts">設定</a></span></header>
+  <main>
+    <p class="empty" id="empty"></p>
+    <div id="post" class="post" hidden></div>
+    <h2 id="stepsTitle" hidden></h2>
+    <div id="steps"></div>
+    <div id="report"></div>
+  </main>
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+== pre-flight: is_scam_like (noul), 300 units, 292 groups
+   teacher answers: no 245, yes 55  (majority 82%)
+   teacher unsure (top probability < 0.6): 0%
+   unit length: median 108 tokens, 1% hit the 1,024 window
+
+   readout      ms   kappa  minority recall  symmetric: coverage  one-sided: coverage (misses)
+   layer 4       4   0.768            0.764                   0%                     0% (-)
+   layer 8       8   0.688            0.745                   0%                     0% (-)
+   layer 12     12   0.746            0.800                   0%                     0% (-)
+   final        27   0.688            0.709                   0%                     0% (-)
+
+== verdict for is_scam_like
+   BACKEND ONLY: no readout passes the graduation rules on these units.
+   - the answer may need reasoning or context the unit doesn't contain (guide: what phrasing can't fix)
+
+wrote /Users/david/project/fraud_detection/data/teacher/is_scam_like.preflight.json

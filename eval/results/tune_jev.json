@@ -1,0 +1,187 @@
+{
+ "split": "tune",
+ "n": 14,
+ "stage1": {
+  "jev": {
+   "n": 14,
+   "accuracy": 0.7857142857142857,
+   "flag_recall": 0.8888888888888888,
+   "flag_precision": 0.8,
+   "p50_ms": 521.0,
+   "p99_ms": 607.0,
+   "answered_by": {
+    "jev": 14
+   },
+   "cost_usd": 0.00041,
+   "cost_per_1k_posts_usd": 0.03
+  }
+ },
+ "stage1_rows": {
+  "jev": [
+   {
+    "id": "case-mygopen-afd1d03b",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.97,
+    "p_claim": 0.67,
+    "pressure": 2,
+    "latency_ms": 517,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-tfc-87a729a1-78a",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.29,
+    "p_claim": 0.81,
+    "pressure": 1,
+    "latency_ms": 513,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-tfc-c3ea1c20-1ab",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.86,
+    "pressure": 3,
+    "latency_ms": 584,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-mygopen-19fff196",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.93,
+    "p_claim": 0.53,
+    "pressure": 1,
+    "latency_ms": 534,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job14",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.97,
+    "p_claim": 0.64,
+    "pressure": 1,
+    "latency_ms": 511,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job54",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.62,
+    "pressure": 1,
+    "latency_ms": 504,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job55",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.97,
+    "p_claim": 0.84,
+    "pressure": 1,
+    "latency_ms": 493,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job67",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.87,
+    "pressure": 1,
+    "latency_ms": 592,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job92",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.85,
+    "pressure": 2,
+    "latency_ms": 519,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-neg16516",
+    "gold": "none",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.57,
+    "pressure": 2,
+    "latency_ms": 603,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-cs1",
+    "gold": "none",
+    "label": "check",
+    "p_scam": 0.59,
+    "p_claim": 0.94,
+    "pressure": 2,
+    "latency_ms": 591,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-cs9",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.06,
+    "p_claim": 0.97,
+    "pressure": 2,
+    "latency_ms": 607,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-job70",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.24,
+    "p_claim": 0.86,
+    "pressure": 1,
+    "latency_ms": 521,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-job11",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.27,
+    "p_claim": 0.25,
+    "pressure": 1,
+    "latency_ms": 543,
+    "answered_by": "jev"
+   }
+  ]
+ },
+ "agree_with_muse": {},
+ "sweep": null,
+ "stage2": null,
+ "stage2_rows": null,
+ "hunch": {
+  "Does this social media post show scam ta": {
+   "graduated": true,
+   "mode": "one_sided",
+   "cv_agreement": 0.9381188118811881,
+   "audit": null
+  },
+  "Does this post state a specific factual ": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.7663230240549829,
+   "audit": null
+  },
+  "How much urgency or pressure language do": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.6872852233676976,
+   "audit": null
+  }
+ }
+}

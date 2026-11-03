@@ -1,0 +1,354 @@
+{
+ "split": "tune",
+ "n": 14,
+ "stage1": {
+  "muse": {
+   "n": 14,
+   "accuracy": 0.7857142857142857,
+   "flag_recall": 1.0,
+   "flag_precision": 0.8181818181818182,
+   "p50_ms": 2695.0,
+   "p99_ms": 3441.0,
+   "answered_by": {
+    "muse": 14
+   },
+   "cost_usd": 0.0697,
+   "cost_per_1k_posts_usd": 4.98
+  },
+  "local": {
+   "n": 14,
+   "accuracy": 0.8571428571428571,
+   "flag_recall": 1.0,
+   "flag_precision": 0.9,
+   "p50_ms": 4238.0,
+   "p99_ms": 9419.0,
+   "answered_by": {
+    "backend": 11,
+    "proxy": 3
+   },
+   "cost_usd": 0.0393,
+   "cost_per_1k_posts_usd": 2.8
+  }
+ },
+ "stage1_rows": {
+  "muse": [
+   {
+    "id": "case-mygopen-afd1d03b",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.18,
+    "pressure": 2,
+    "latency_ms": 3276,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-tfc-87a729a1-78a",
+    "gold": "high",
+    "label": "check",
+    "p_scam": 0.05,
+    "p_claim": 0.85,
+    "pressure": 0,
+    "latency_ms": 2792,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-tfc-c3ea1c20-1ab",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.85,
+    "pressure": 2,
+    "latency_ms": 2688,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-mygopen-19fff196",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 3441,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job14",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.08,
+    "pressure": 0,
+    "latency_ms": 2144,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job54",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 2614,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job55",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 2780,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job67",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.15,
+    "pressure": 1,
+    "latency_ms": 3352,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job92",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.93,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 3012,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-neg16516",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.02,
+    "p_claim": 0.12,
+    "pressure": 0,
+    "latency_ms": 2695,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-cs1",
+    "gold": "none",
+    "label": "check",
+    "p_scam": 0.07,
+    "p_claim": 0.9,
+    "pressure": 1,
+    "latency_ms": 2315,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-cs9",
+    "gold": "none",
+    "label": "check",
+    "p_scam": 0.02,
+    "p_claim": 0.97,
+    "pressure": 1,
+    "latency_ms": 1831,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-job70",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.07,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 2829,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-job11",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.02,
+    "p_claim": 0.08,
+    "pressure": 0,
+    "latency_ms": 2381,
+    "answered_by": "muse"
+   }
+  ],
+  "local": [
+   {
+    "id": "case-mygopen-afd1d03b",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.2,
+    "pressure": 2,
+    "latency_ms": 9419,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-tfc-87a729a1-78a",
+    "gold": "high",
+    "label": "check",
+    "p_scam": 0.05,
+    "p_claim": 0.75,
+    "pressure": 0,
+    "latency_ms": 5555,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-tfc-c3ea1c20-1ab",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.88,
+    "pressure": 3,
+    "latency_ms": 4349,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-mygopen-19fff196",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.2,
+    "pressure": 0,
+    "latency_ms": 7393,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job14",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.85,
+    "p_claim": 0.12,
+    "pressure": 0,
+    "latency_ms": 3791,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job54",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.93,
+    "p_claim": 0.08,
+    "pressure": 1,
+    "latency_ms": 4238,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job55",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 7578,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job67",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 4049,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job92",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.93,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 3525,
+    "answered_by": "backend"
+   },
+   {
+    "id": "neg-neg16516",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0009,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 73,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "neg-cs1",
+    "gold": "none",
+    "label": "check",
+    "p_scam": 0.1,
+    "p_claim": 0.82,
+    "pressure": 0,
+    "latency_ms": 6894,
+    "answered_by": "backend"
+   },
+   {
+    "id": "neg-cs9",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0001,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 92,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "neg-job70",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.08,
+    "p_claim": 0.12,
+    "pressure": 0,
+    "latency_ms": 6311,
+    "answered_by": "backend"
+   },
+   {
+    "id": "neg-job11",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0001,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 61,
+    "answered_by": "proxy"
+   }
+  ]
+ },
+ "agree_with_muse": {
+  "muse": 1.0,
+  "local": 0.9285714285714286
+ },
+ "sweep": {
+  "hi": 0.8,
+  "mid": 0.5,
+  "claim": 1.01,
+  "n": 14,
+  "accuracy": 0.9285714285714286,
+  "flag_recall": 0.8888888888888888,
+  "flag_precision": 1.0
+ },
+ "stage2": null,
+ "stage2_rows": null,
+ "hunch": {
+  "Does this social media post show scam ta": {
+   "graduated": true,
+   "mode": "one_sided",
+   "cv_agreement": 0.9381188118811881,
+   "audit": null
+  },
+  "Does this post state a specific factual ": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.7663230240549829,
+   "audit": null
+  },
+  "How much urgency or pressure language do": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.6872852233676976,
+   "audit": null
+  }
+ }
+}

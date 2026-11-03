@@ -1,0 +1,16 @@
+== pre-flight: has_checkable_claim (noul), 300 units, 292 groups
+   teacher answers: no 127, yes 173  (majority 58%)
+   teacher unsure (top probability < 0.6): 0%
+   unit length: median 108 tokens, 1% hit the 1,024 window
+
+   readout      ms   kappa  minority recall  symmetric: coverage  one-sided: coverage (misses)
+   layer 4       5   0.450            0.661                   0%                     0% (-)
+   layer 8      10   0.433            0.669                   0%                     0% (-)
+   layer 12     15   0.531            0.748                   0%                     0% (-)
+   final        29   0.480            0.693                   0%                     0% (-)
+
+== verdict for has_checkable_claim
+   BACKEND ONLY: no readout passes the graduation rules on these units.
+   - the answer may need reasoning or context the unit doesn't contain (guide: what phrasing can't fix)
+
+wrote /Users/david/project/fraud_detection/data/teacher/has_checkable_claim.preflight.json

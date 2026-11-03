@@ -1,0 +1,769 @@
+{
+ "split": "test",
+ "n": 16,
+ "stage1": {
+  "muse": {
+   "n": 16,
+   "accuracy": 0.8125,
+   "flag_recall": 0.8181818181818182,
+   "flag_precision": 0.9,
+   "p50_ms": 2696.0,
+   "p99_ms": 4283.0,
+   "answered_by": {
+    "muse": 16
+   },
+   "cost_usd": 0.07895,
+   "cost_per_1k_posts_usd": 4.934
+  },
+  "local": {
+   "n": 16,
+   "accuracy": 0.875,
+   "flag_recall": 0.8181818181818182,
+   "flag_precision": 1.0,
+   "p50_ms": 4723.0,
+   "p99_ms": 6504.0,
+   "answered_by": {
+    "backend": 12,
+    "proxy": 4
+   },
+   "cost_usd": 0.0595,
+   "cost_per_1k_posts_usd": 3.719,
+   "cost_note": "includes 12 forwarded teacher calls estimated at $0.00164 each"
+  },
+  "jev": {
+   "n": 16,
+   "accuracy": 0.6875,
+   "flag_recall": 0.7272727272727273,
+   "flag_precision": 0.8,
+   "p50_ms": 555.0,
+   "p99_ms": 907.0,
+   "answered_by": {
+    "jev": 16
+   },
+   "cost_usd": 0.00046,
+   "cost_per_1k_posts_usd": 0.029
+  }
+ },
+ "stage1_rows": {
+  "muse": [
+   {
+    "id": "case-mygopen-d6803af8",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.92,
+    "pressure": 1,
+    "latency_ms": 2963,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-mygopen-007a9738",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.8,
+    "p_claim": 0.95,
+    "pressure": 0,
+    "latency_ms": 3597,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-tfc-377312f6-a6f",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.2,
+    "p_claim": 0.95,
+    "pressure": 0,
+    "latency_ms": 4283,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-mygopen-383fb05d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.97,
+    "p_claim": 0.05,
+    "pressure": 2,
+    "latency_ms": 4256,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-tfc-eda5cc83-253",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.1,
+    "pressure": 0,
+    "latency_ms": 2383,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-mygopen-8e0a8811",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.15,
+    "p_claim": 0.85,
+    "pressure": 0,
+    "latency_ms": 3493,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-mygopen-855dee8d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.1,
+    "pressure": 3,
+    "latency_ms": 2492,
+    "answered_by": "muse"
+   },
+   {
+    "id": "case-tfc-f5d4f15c-131",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.85,
+    "p_claim": 0.1,
+    "pressure": 2,
+    "latency_ms": 2696,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job34",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 2484,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job45",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 2098,
+    "answered_by": "muse"
+   },
+   {
+    "id": "th-job64",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.93,
+    "p_claim": 0.15,
+    "pressure": 1,
+    "latency_ms": 2428,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-neg16515",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.01,
+    "p_claim": 0.1,
+    "pressure": 0,
+    "latency_ms": 2487,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-neg1656",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.02,
+    "p_claim": 0.12,
+    "pressure": 0,
+    "latency_ms": 2272,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-promo0",
+    "gold": "none",
+    "label": "high",
+    "p_scam": 0.85,
+    "p_claim": 0.9,
+    "pressure": 1,
+    "latency_ms": 3320,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-promo5",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.05,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 3339,
+    "answered_by": "muse"
+   },
+   {
+    "id": "neg-job51",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.15,
+    "p_claim": 0.08,
+    "pressure": 1,
+    "latency_ms": 2638,
+    "answered_by": "muse"
+   }
+  ],
+  "local": [
+   {
+    "id": "case-mygopen-d6803af8",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.95,
+    "pressure": 1,
+    "latency_ms": 4191,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-mygopen-007a9738",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.001,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 53,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "case-tfc-377312f6-a6f",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.85,
+    "p_claim": 0.96,
+    "pressure": 0,
+    "latency_ms": 5103,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-mygopen-383fb05d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.12,
+    "pressure": 2,
+    "latency_ms": 6026,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-tfc-eda5cc83-253",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.1,
+    "pressure": 0,
+    "latency_ms": 3936,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-mygopen-8e0a8811",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.15,
+    "p_claim": 0.9,
+    "pressure": 0,
+    "latency_ms": 4723,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-mygopen-855dee8d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.12,
+    "pressure": 3,
+    "latency_ms": 5111,
+    "answered_by": "backend"
+   },
+   {
+    "id": "case-tfc-f5d4f15c-131",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.85,
+    "p_claim": 0.12,
+    "pressure": 2,
+    "latency_ms": 6504,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job34",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.12,
+    "pressure": 0,
+    "latency_ms": 5531,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job45",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.9,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 5986,
+    "answered_by": "backend"
+   },
+   {
+    "id": "th-job64",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.12,
+    "pressure": 1,
+    "latency_ms": 4527,
+    "answered_by": "backend"
+   },
+   {
+    "id": "neg-neg16515",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.01,
+    "p_claim": 0.15,
+    "pressure": 0,
+    "latency_ms": 4375,
+    "answered_by": "backend"
+   },
+   {
+    "id": "neg-neg1656",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0065,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 68,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "neg-promo0",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0003,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 57,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "neg-promo5",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.0003,
+    "p_claim": 0.0,
+    "pressure": null,
+    "latency_ms": 36,
+    "answered_by": "proxy"
+   },
+   {
+    "id": "neg-job51",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.15,
+    "p_claim": 0.15,
+    "pressure": 1,
+    "latency_ms": 6050,
+    "answered_by": "backend"
+   }
+  ],
+  "jev": [
+   {
+    "id": "case-mygopen-d6803af8",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.93,
+    "pressure": 1,
+    "latency_ms": 743,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-mygopen-007a9738",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.04,
+    "p_claim": 0.94,
+    "pressure": 0,
+    "latency_ms": 517,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-tfc-377312f6-a6f",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.05,
+    "p_claim": 0.94,
+    "pressure": 0,
+    "latency_ms": 518,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-mygopen-383fb05d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.94,
+    "p_claim": 0.33,
+    "pressure": 2,
+    "latency_ms": 604,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-tfc-eda5cc83-253",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.29,
+    "pressure": 1,
+    "latency_ms": 632,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-mygopen-8e0a8811",
+    "gold": "high",
+    "label": "none",
+    "p_scam": 0.37,
+    "p_claim": 0.85,
+    "pressure": 0,
+    "latency_ms": 525,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-mygopen-855dee8d",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.53,
+    "pressure": 3,
+    "latency_ms": 542,
+    "answered_by": "jev"
+   },
+   {
+    "id": "case-tfc-f5d4f15c-131",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.95,
+    "p_claim": 0.65,
+    "pressure": 1,
+    "latency_ms": 502,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job34",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.92,
+    "p_claim": 0.92,
+    "pressure": 1,
+    "latency_ms": 555,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job45",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.89,
+    "p_claim": 0.92,
+    "pressure": 1,
+    "latency_ms": 822,
+    "answered_by": "jev"
+   },
+   {
+    "id": "th-job64",
+    "gold": "high",
+    "label": "high",
+    "p_scam": 0.98,
+    "p_claim": 0.76,
+    "pressure": 1,
+    "latency_ms": 512,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-neg16515",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.1,
+    "p_claim": 0.81,
+    "pressure": 2,
+    "latency_ms": 543,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-neg1656",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.05,
+    "p_claim": 0.64,
+    "pressure": 1,
+    "latency_ms": 509,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-promo0",
+    "gold": "none",
+    "label": "high",
+    "p_scam": 0.88,
+    "p_claim": 0.94,
+    "pressure": 2,
+    "latency_ms": 580,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-promo5",
+    "gold": "none",
+    "label": "none",
+    "p_scam": 0.26,
+    "p_claim": 0.93,
+    "pressure": 2,
+    "latency_ms": 591,
+    "answered_by": "jev"
+   },
+   {
+    "id": "neg-job51",
+    "gold": "none",
+    "label": "check",
+    "p_scam": 0.73,
+    "p_claim": 0.94,
+    "pressure": 2,
+    "latency_ms": 907,
+    "answered_by": "jev"
+   }
+  ]
+ },
+ "agree_with_muse": {
+  "muse": 1.0,
+  "local": 0.8125,
+  "jev": 0.875
+ },
+ "sweep": null,
+ "stage2": {
+  "n": 11,
+  "accuracy": 0.7272727272727273,
+  "abstain_rate": 1.0,
+  "risk_high_rate": 0.8181818181818182,
+  "e2e_p50_ms": 56796.089333016425,
+  "e2e_p99_ms": 70938.85125010274,
+  "cost_usd": 2.0356,
+  "posts": 11
+ },
+ "stage2_rows": [
+  {
+   "id": "case-mygopen-d6803af8",
+   "risk": "high",
+   "claims": [
+    [
+     "張忠謀免費贈書",
+     "refuted"
+    ],
+    [
+     "黃仁勳免費贈書",
+     "refuted"
+    ],
+    [
+     "掃碼加LINE好友即可免費領取限量好書",
+     "refuted"
+    ]
+   ],
+   "n_evidence": 13,
+   "latency_ms": 36243
+  },
+  {
+   "id": "case-mygopen-007a9738",
+   "risk": "high",
+   "claims": [
+    [
+     "曹興誠為聯電創辦人",
+     "refuted"
+    ],
+    [
+     "曹興誠近期拍攝影片宣傳扶曦計畫及天籟投資等新投資計畫",
+     "insufficient"
+    ],
+    [
+     "Yahoo新聞有關於上述投資計畫的相關報導",
+     "insufficient"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 54864
+  },
+  {
+   "id": "case-tfc-377312f6-a6f",
+   "risk": "high",
+   "claims": [
+    [
+     "台灣銀行起訴蔡康永",
+     "refuted"
+    ],
+    [
+     "蔡康永在理科太太直播節目中表示自己透過加密貨幣致富",
+     "refuted"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 44255
+  },
+  {
+   "id": "case-mygopen-383fb05d",
+   "risk": "high",
+   "claims": [
+    [
+     "在IG抽獎活動中獲獎者須先小額捐款給公益團體，並匯款支付額外費用或提供提款卡、銀行帳戶資料才能領獎",
+     "supported"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 63871
+  },
+  {
+   "id": "case-tfc-eda5cc83-253",
+   "risk": "high",
+   "claims": [
+    [
+     "專業律師團及反詐騙組織可協助追討並找回被詐騙的款項",
+     "refuted"
+    ]
+   ],
+   "n_evidence": 13,
+   "latency_ms": 50946
+  },
+  {
+   "id": "case-mygopen-8e0a8811",
+   "risk": "check",
+   "claims": [
+    [
+     "在Google搜尋LINE時，第一筆結果為官方網站",
+     "insufficient"
+    ],
+    [
+     "該官方網站提供LINE網頁版登入",
+     "insufficient"
+    ],
+    [
+     "LINE網頁版登入需掃描QRcode授權登入帳號",
+     "supported"
+    ]
+   ],
+   "n_evidence": 13,
+   "latency_ms": 70939
+  },
+  {
+   "id": "case-mygopen-855dee8d",
+   "risk": "high",
+   "claims": [
+    [
+     "該用戶使用先買後付購買了iPad mini且即將扣款",
+     "refuted"
+    ],
+    [
+     "該用戶的在線商品訂單出現異常",
+     "insufficient"
+    ],
+    [
+     "若遲繳將上報聯徵中心",
+     "insufficient"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 68791
+  },
+  {
+   "id": "case-tfc-f5d4f15c-131",
+   "risk": "high",
+   "claims": [
+    [
+     "在留言區送上祝福就可以拿到668現金紅包",
+     "refuted"
+    ],
+    [
+     "需私訊Instagram帳號領取紅包",
+     "supported"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 37094
+  },
+  {
+   "id": "th-job34",
+   "risk": "high",
+   "claims": [
+    [
+     "正職月薪為37000至47900元",
+     "insufficient"
+    ],
+    [
+     "兼職時薪為230至287元，可全職居家遠端辦公",
+     "insufficient"
+    ],
+    [
+     "公司地點位於新北市蘆洲區傳統市場旁",
+     "insufficient"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 61399
+  },
+  {
+   "id": "th-job45",
+   "risk": "check",
+   "claims": [
+    [
+     "正職月薪為37100至48200元，常見為39300、39900元水準",
+     "insufficient"
+    ],
+    [
+     "兼職時薪為233至293元，表現好為243、253元，可全職居家遠端辦公",
+     "insufficient"
+    ],
+    [
+     "公司地點位於雲林縣土庫鎮農路旁，下公車走5分鐘就到",
+     "insufficient"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 57319
+  },
+  {
+   "id": "th-job64",
+   "risk": "high",
+   "claims": [
+    [
+     "該職缺名稱為線上訂單協助員，工作內容為接單、操作訂單、完成訂單",
+     "insufficient"
+    ],
+    [
+     "兼職薪資為每小時280元起，連續做滿一週送零食大禮箱",
+     "insufficient"
+    ],
+    [
+     "上班地點為居家遠端，休假制度為週休二日且可彈性排休",
+     "insufficient"
+    ]
+   ],
+   "n_evidence": 12,
+   "latency_ms": 56796
+  }
+ ],
+ "hunch": {
+  "Does this social media post show scam ta": {
+   "graduated": true,
+   "mode": "one_sided",
+   "cv_agreement": 0.9381188118811881,
+   "audit": null
+  },
+  "Does this post state a specific factual ": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.7663230240549829,
+   "audit": null
+  },
+  "How much urgency or pressure language do": {
+   "graduated": false,
+   "mode": null,
+   "cv_agreement": 0.6872852233676976,
+   "audit": null
+  }
+ }
+}

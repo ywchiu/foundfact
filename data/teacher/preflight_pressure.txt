@@ -1,0 +1,16 @@
+== pre-flight: pressure (score), 300 units, 292 groups
+   teacher answers: none 175, mild 97, clear 19, extreme 9  (majority 58%)
+   teacher unsure (top probability < 0.6): 2%
+   unit length: median 108 tokens, 1% hit the 1,024 window
+
+   readout      ms   kappa  minority recall  symmetric: coverage  spearman    QWK  within-1  levels in order
+   layer 4       6   0.358            0.480                   0%     0.425  0.373     0.947             True
+   layer 8      11   0.420            0.528                   0%     0.474  0.430     0.943             True
+   layer 12     15   0.415            0.520                   0%     0.487  0.488     0.957             True
+   final        28   0.384            0.488                   0%     0.431  0.341     0.933             True
+
+== verdict for pressure
+   BACKEND ONLY: no readout passes the graduation rules on these units.
+   - the student misses most of the teacher's non-majority answers: split rare classes into their own yes/no questions, or decompose the judgement into observable sub-questions (guide rules 2-3)
+
+wrote /Users/david/project/fraud_detection/data/teacher/pressure.preflight.json

@@ -1,0 +1,16 @@
+.env
+.git
+.superpowers
+**/.venv
+**/__pycache__
+node_modules
+dist
+extension
+eval
+docs
+data/posts.jsonl
+data/raw_factchecks.jsonl
+data/teacher
+data/eval
+data/*.db-shm
+data/*.db-wal

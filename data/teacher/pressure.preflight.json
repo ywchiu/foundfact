@@ -1,0 +1,62 @@
+{
+ "name": "pressure",
+ "type": "score",
+ "n": 300,
+ "teacher_counts": [
+  175,
+  97,
+  19,
+  9
+ ],
+ "best": "layer 4",
+ "readouts": {
+  "layer 4": {
+   "ms": 5.694382500369102,
+   "kappa": 0.3575608514969044,
+   "minority_recall": 0.48,
+   "symmetric_coverage": 0.0,
+   "spearman": 0.425117167968533,
+   "qwk": 0.3732970027247956,
+   "within_one": 0.9466666666666667,
+   "levels_in_order": true,
+   "coverage": 0.0,
+   "ms_per_item": 2005.694382500369
+  },
+  "layer 8": {
+   "ms": 10.639850834850222,
+   "kappa": 0.41983780411728,
+   "minority_recall": 0.528,
+   "symmetric_coverage": 0.0,
+   "spearman": 0.47395282169801883,
+   "qwk": 0.4304394715556753,
+   "within_one": 0.9433333333333334,
+   "levels_in_order": true,
+   "coverage": 0.0,
+   "ms_per_item": 2010.6398508348502
+  },
+  "layer 12": {
+   "ms": 15.436412084382027,
+   "kappa": 0.4150943396226413,
+   "minority_recall": 0.52,
+   "symmetric_coverage": 0.0,
+   "spearman": 0.4871889687663196,
+   "qwk": 0.48842218632202483,
+   "within_one": 0.9566666666666667,
+   "levels_in_order": true,
+   "coverage": 0.0,
+   "ms_per_item": 2015.436412084382
+  },
+  "final": {
+   "ms": 27.6072410447523,
+   "kappa": 0.3838781447886361,
+   "minority_recall": 0.488,
+   "symmetric_coverage": 0.0,
+   "spearman": 0.431315903510039,
+   "qwk": 0.3409863945578231,
+   "within_one": 0.9333333333333333,
+   "levels_in_order": true,
+   "coverage": 0.0,
+   "ms_per_item": 2027.6072410447523
+  }
+ }
+}

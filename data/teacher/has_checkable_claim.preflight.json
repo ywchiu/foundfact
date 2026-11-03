@@ -1,0 +1,52 @@
+{
+ "name": "has_checkable_claim",
+ "type": "noul",
+ "n": 300,
+ "teacher_counts": [
+  127,
+  173
+ ],
+ "best": "layer 4",
+ "readouts": {
+  "layer 4": {
+   "ms": 5.108005829388276,
+   "kappa": 0.4503732881418036,
+   "minority_recall": 0.6614173228346457,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2005.1080058293883
+  },
+  "layer 8": {
+   "ms": 10.156251455191523,
+   "kappa": 0.4327501366867142,
+   "minority_recall": 0.6692913385826772,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2010.1562514551915
+  },
+  "layer 12": {
+   "ms": 14.744795210426673,
+   "kappa": 0.5313773431132844,
+   "minority_recall": 0.7480314960629921,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2014.7447952104267
+  },
+  "final": {
+   "ms": 28.589048124849796,
+   "kappa": 0.4800456100342076,
+   "minority_recall": 0.6929133858267716,
+   "symmetric_coverage": 0.0,
+   "one_sided_coverage": 0.0,
+   "one_sided_misses": null,
+   "coverage": 0.0,
+   "ms_per_item": 2028.5890481248498
+  }
+ }
+}

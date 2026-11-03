@@ -1,0 +1,56 @@
+[
+ {
+  "model": "google/embeddinggemma-2",
+  "dim": 768,
+  "headline_to_case": {
+   "n": 137,
+   "hit@1": 0.8321167883211679,
+   "hit@3": 0.9416058394160584,
+   "mrr": 0.8876986385471788
+  },
+  "same_type_loo": {
+   "n": 137,
+   "hit@1": 0.6861313868613139,
+   "hit@3": 0.8394160583941606,
+   "mrr": 0.7793665276329512
+  },
+  "texts_per_s": 300.4,
+  "mean_pairwise_cos": 0.689
+ },
+ {
+  "model": "ywchiu/gemma-embed-peft (first-token, as on card)",
+  "dim": 1152,
+  "headline_to_case": {
+   "n": 137,
+   "hit@1": 0.0072992700729927005,
+   "hit@3": 0.021897810218978103,
+   "mrr": 0.04009125676496252
+  },
+  "same_type_loo": {
+   "n": 137,
+   "hit@1": 0.40145985401459855,
+   "hit@3": 0.5036496350364964,
+   "mrr": 0.5093241134752603
+  },
+  "texts_per_s": 18.4,
+  "mean_pairwise_cos": 0.874
+ },
+ {
+  "model": "ywchiu/gemma-embed-peft (mean pooling, diagnostic)",
+  "dim": 1152,
+  "headline_to_case": {
+   "n": 137,
+   "hit@1": 0.5401459854014599,
+   "hit@3": 0.656934306569343,
+   "mrr": 0.6315268777957065
+  },
+  "same_type_loo": {
+   "n": 137,
+   "hit@1": 0.5985401459854015,
+   "hit@3": 0.8175182481751825,
+   "mrr": 0.723325825357401
+  },
+  "texts_per_s": 20.8,
+  "mean_pairwise_cos": 0.813
+ }
+]

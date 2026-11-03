@@ -1,0 +1,19 @@
+[Unit]
+Description=FoundFact scam-check API + web (FastAPI/uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=david
+Group=david
+WorkingDirectory=/webapps/foundfact/backend
+Environment=OMP_NUM_THREADS=1
+ExecStart=/webapps/foundfact/backend/.venv/bin/python -m uvicorn app.api:app --host 127.0.0.1 --port 8020 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=always
+RestartSec=5
+MemoryMax=600M
+StandardOutput=append:/webapps/foundfact/api.log
+StandardError=append:/webapps/foundfact/api.log
+
+[Install]
+WantedBy=multi-user.target
