@@ -47,7 +47,10 @@ def test_screen_is_rate_limited_per_post(settings, store):
     posts = lambda n, o: [{"id": f"p{o + i}", "platform": "web", "text": f"hello {o + i}"} for i in range(n)]
     assert c.post("/screen", json={"posts": posts(2, 0), "provider": "local"}).status_code == 200
     r = c.post("/screen", json={"posts": posts(2, 2), "provider": "local"})
-    assert r.status_code == 429 and r.json()["error"] == "rate_limited"
+    assert r.status_code == 429
+    assert 1 <= int(r.headers["Retry-After"]) <= 3600
+    assert r.json()["error"] == "rate_limited"
+    assert c.post("/screen", json={"posts": posts(1, 4), "provider": "local"}).status_code == 200
 
 
 def test_screen_over_budget_answers_without_paid_models(settings, store, fake_muse):
@@ -161,3 +164,16 @@ def test_whole_verification_has_a_deadline(settings, store):
     settings.verify_timeout_s = 0.2
     code, body = sse(client(settings, store, SlowMuse()))
     assert code == 200 and "event: report" not in body and "event: error" in body
+
+
+def test_batch_rate_limit_is_atomic_and_retry_after_is_precise():
+    now = [0.0]
+    limiter = RateLimiter(3, window_s=60, clock=lambda: now[0])
+    assert limiter.check("ip", cost=2)
+    now[0] = 10
+    assert not limiter.check("ip", cost=2)
+    assert len(limiter.hits["ip"]) == 2
+    assert limiter.retry_after("ip", cost=2) == 50
+    assert limiter.check("ip")  # rejected batch did not consume the remaining slot
+    now[0] = 60
+    assert limiter.check("ip", cost=2)

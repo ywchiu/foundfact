@@ -1,5 +1,6 @@
 """Public-site guards: input clipping, per-IP rate limit, daily budget, result cache."""
 import hashlib
+import math
 import time
 from collections import defaultdict, deque
 from datetime import datetime
@@ -17,7 +18,7 @@ class RateLimiter:
         self.per_hour, self.window, self.clock = per_hour, window_s, clock
         self.hits: dict[str, deque] = defaultdict(deque)
 
-    def check(self, ip: str) -> bool:
+    def _bucket(self, ip: str):
         now = self.clock()
         if len(self.hits) > 1000 or not self.hits.get(ip):  # drop buckets whose window has passed
             for k in [k for k, d in self.hits.items() if not d or now - d[-1] >= self.window]:
@@ -25,10 +26,23 @@ class RateLimiter:
         q = self.hits[ip]
         while q and now - q[0] >= self.window:
             q.popleft()
-        if len(q) >= self.per_hour:
-            return False
-        q.append(now)
+        return q, now
+
+    def check(self, ip: str, cost: int = 1) -> bool:
+        if cost < 1:
+            raise ValueError("cost must be positive")
+        q, now = self._bucket(ip)
+        if len(q) + cost > self.per_hour:
+            return False  # atomic: reject the entire batch without consuming any allowance
+        q.extend([now] * cost)
         return True
+
+    def retry_after(self, ip: str, cost: int = 1) -> int:
+        q, now = self._bucket(ip)
+        if len(q) + cost <= self.per_hour:
+            return 0
+        index = len(q) + cost - self.per_hour - 1
+        return max(1, math.ceil((q[index] if index < len(q) else now) + self.window - now))
 
 
 class BudgetGuard:

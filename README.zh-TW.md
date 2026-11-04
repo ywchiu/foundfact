@@ -7,11 +7,11 @@
 由 [大數軟體 LargitData](https://www.largitdata.com) 為 Meta Global AI Developer Hackathon 開發（Startups 組 · Build for Your World）。
 
 - 線上試用：**https://foundfact.infominer.io**（可以貼文字，也可以直接貼截圖）
-- 示範影片（3 分鐘）：_待補_
+- 示範影片（2:21）：**https://youtu.be/v88sLQ7WtPA**
 
 ## 要解決的問題
 
-在台灣，很多詐騙是從社群動態開始的。常見的手法像是：
+使用者滑動社群動態時，可能遇到可疑招攬，例如：
 
 - 冒用名人的投資群組，例如「知名企業家免費送書，加 LINE 領取」；
 - 「在家工作，時薪新臺幣 290 元，私訊我」的徵才貼文；
@@ -23,55 +23,26 @@ FoundFact 把查證帶到大家遇到詐騙的地方，而且會讓你看到來�
 
 ## 怎麼運作
 
-```
- Facebook / Threads 動態牆                          FoundFact 後端（FastAPI，單一容器）
-┌──────────────────────────┐   畫面上的貼文（批次）    ┌───────────────────────────────────────────┐
-│ content script            │ ─────────────────────────▶ │ /screen  — 第一段快篩「System 1」         │
-│  各平台轉接（FB、Threads） │                            │   可選 local | jev | muse                   │
-│  Shadow DOM 紅色提醒條     │ ◀───────────────────────── │   local：hunch + EmbeddingGemma 2 學生模型  │
-└────────────┬─────────────┘   標記 high / none          │          （有把握的「不是」→ 不呼叫 LLM）   │
-             │ 點「看原因」                              │          其他 → 交給 Muse 老師              │
-┌────────────▼─────────────┐                            │   jev：  TypeSafe Jev 1.14（OpenRouter）    │
-│ Chrome 側邊欄              │   SSE：Agent 每一步        │   muse： Muse，json_schema，minimal effort │
-│  即時顯示查證步驟          │ ◀───────────────────────── │                                             │
-│  附來源的報告              │ ─────────────────────────▶ │ /verify  — 第二段查證「System 2」（Muse）  │
-└──────────────────────────┘   貼文文字 + 圖片網址       │   1 讀圖，抄下圖上文字（視覺）             │
-                                                         │   2 抽出可查證的主張                       │
- 網頁版（/）— 貼上貼文或截圖，                            │   3 比對 137 個已知案例；檢查連結          │
- 得到同樣的報告                                          │   4 Muse web_search 逐條搜尋              │
-                                                         │   5 依證據判斷每條主張                     │
-                                                         │   6 結論：風險、詐騙類型、建議行動         │
-                                                         └───────────────────────────────────────────┘
-```
+**獨立擴充功能（0.2.0）**使用使用者自己的金鑰，直接連線模型供應商，不呼叫 FoundFact 後端。
 
-- **已知的詐騙連結最先處理。**
-  - 短網址（reurl.cc、bit.ly、lihi 等）由伺服器用 HEAD 請求追到最終網址，3 秒逾時，不會開啟頁面內容。
-  - 最終網域會拿去比對內政部警政署因涉及詐騙而停止解析的 115,585 個網域。
-  - 命中時不需呼叫任何模型，1 毫秒內標紅，提醒條上會寫出是哪個網域。
-  - 名單來自政府資料開放平臺資料集 [176455](https://data.gov.tw/dataset/176455) 與
-    [160055](https://data.gov.tw/dataset/160055)（政府資料開放授權條款第 1 版），由
-    `data/scripts/build_blocklist.py` 重建。
-  - 免費架站服務上的個別網站（例如 `shopeetw88.github.io`）會被比對到，但 `github.io`、`google.com`
-    這類平台本身不會。
-- **第一段每篇貼文都要跑，所以必須便宜。** 在擴充功能的設定裡可以選：
-  - **local**：透過 [hunch](https://github.com/undrgrnd-labs/hunch) 代理層使用 Google EmbeddingGemma 2 學生模型。
-    Muse 當老師教它；當它在「這篇貼文有沒有詐騙手法？」這題上學到跟 Muse 判斷一致，就開始自己回答。
-    有把握的「不是」（日常貼文約 64%）不用呼叫 LLM，其餘交給 Muse 回答，同時繼續教學生。
-  - **jev**：TypeSafe 的 Jev 1.14 System One 模型，約 0.5 秒回傳結構化的機率判斷。
-  - **muse**：直接問 Muse。
-- **第二段只在使用者要求時才跑。**
-  - Muse Agent 把每一步即時串流到側邊欄。
-  - 有圖片時先讀圖。Muse 會把圖上的文字抄下來，所以一張簡訊截圖會跟貼上的文字一樣被查證，
-    裡面的網址也會被檢查。貼文自己的圖片不會被當成支持它自身主張的證據。
-  - 報告裡每條主張都必須引用 Agent 真的找到的證據。沒有證據的主張只會標成「證據不足」，不會標成「被反駁」。
-  - 結果快取 24 小時。公開站以每個 IP 的頻率限制和每日金額上限保護。
-- **範圍：** 這個版本只看詐騙，不判斷政治或新聞內容。
+1. 貼文進入畫面時，先比對內建警政詐騙網域名單，再以使用者的 Jev 金鑰篩選文字。滑動時不會改用 Muse。
+2. 高風險貼文會出現紅色警示；點 **Why?** 才開啟 Chrome 原生側欄，以使用者的 Meta 金鑰啟動 Muse 查證。
+3. Muse 讀取第一張支援的圖片（如有）、抽取主張、審查本機選出的已知案例候選、搜尋網路、衡量證據並產生報告。沒有證據的主張標為「證據不足」。
+4. 金鑰保存在僅限可信擴充功能環境存取的本機儲存區；報告於瀏覽器工作階段快取 24 小時。可自訂本機每小時上限，供應商的限額仍適用；不扣公開網站的 IP 額度。
+
+**公開網站**仍由伺服器處理：到 https://foundfact.infominer.io 貼文字或上傳截圖。保留公開站的限流與每日預算。伺服器可解析短網址；獨立插件不追蹤可疑連結、不解析短網址。兩者均支援英文和繁體中文。
+
+參考資料包含 **137 個已揭露的詐騙案例**及**警政資料的 115,585 個詐騙網站**，名單來源為開放資料集 [176455](https://data.gov.tw/dataset/176455) 和 [160055](https://data.gov.tw/dataset/160055)，依政府資料開放授權條款第 1 版使用。插件以本機文字重疊挑選候選，再交 Muse 審查，與網站的案例比對方式不同。
+
+專案另有 Muse 教導較小模型的實驗，第一次測試約 64% 範例可自行處理，**未啟用於公開站或目前的獨立插件**。以下評測數字屬於已測試的伺服器路徑，不能當作新版獨立插件的準確率或速度。
+
+詳見[插件設定、額度與隱私](extension/BYOK.md)。
 
 ### Muse 用在哪裡
 
 | 用途 | 使用的 API 功能 |
 |---|---|
-| 第一段快篩 | Chat Completions，`response_format: json_schema`，`reasoning_effort: minimal` |
+| 伺服器快篩實驗 | Chat Completions，`response_format: json_schema`，`reasoning_effort: minimal` |
 | 當本機學生模型的老師 | 同樣的 schema，由 hunch 透過 `/teacher/v1/answer` 呼叫（僅限本機） |
 | 讀圖片和截圖 | 多模態 `image_url` 輸入；抄下圖上文字，包含網址 |
 | 即時查證 | Responses API 搭配 `web_search` 工具，串流輸出 |
@@ -187,13 +158,14 @@ uv run python -m hunch serve --db /path/to/fraud_detection/data/hunch.db \
 
 1. 執行 `bash extension/build.sh`。
 2. 開啟 `chrome://extensions`，打開「開發人員模式」，點「載入未封裝項目」，選擇 `extension/`。
-3. 打開 Facebook 或 Threads。
+3. 開啟插件 Settings，填入 Jev（OpenRouter 或 TypeSafe）與 Meta Muse 金鑰後儲存。
+4. 重新整理 Facebook 或 Threads；插件預設英文。詳見 [BYOK.md](extension/BYOK.md)。
 
 **跑測試：**
 
 ```bash
-(cd backend && uv run pytest -q)   # 106 個測試
-npm install && npm test            # 32 個測試（擴充功能轉接、掃描器、報告呈現）
+(cd backend && uv run pytest -q)   # 107 個測試
+npm install && npm test            # 54 個測試（擴充功能、直接連線保護、報告呈現）
 ```
 
 **部署：** 線上站跑在一台小型 VM 上，前面是 nginx 和 Cloudflare，見 [`deploy/vm.md`](deploy/vm.md)。
@@ -202,7 +174,7 @@ npm install && npm test            # 32 個測試（擴充功能轉接、掃描�
 
 ## 隱私與安全
 
-- API 金鑰只放在伺服器上，擴充功能和網頁版都拿不到。
+- 網站的供應商金鑰保存在伺服器；獨立插件使用使用者自己的金鑰，僅保存在可信擴充功能環境可讀的本機儲存區，不傳給社群頁面或 FoundFact。本機儲存不代表靜態加密。
 - 擴充功能只讀動態牆上貼文的可見文字、作者、連結和圖片網址，不會讀私訊或帳號資料。
 - 除了 24 小時的結果快取，什麼都不保存。見 [`/privacy`](web/privacy.html)。
 - 不碰政治內容：Meta 版本只篩詐騙。

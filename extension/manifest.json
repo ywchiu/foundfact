@@ -2,25 +2,62 @@
   "manifest_version": 3,
   "name": "FoundFact 查證助手",
   "short_name": "FoundFact",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Flags likely scam posts in your Facebook and Threads feed, and lets an AI agent (Meta Muse) verify them with sources.",
-  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
-  "action": { "default_title": "FoundFact 查證助手" },
-  "background": { "service_worker": "background.js", "type": "module" },
-  "side_panel": { "default_path": "sidepanel/index.html" },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_title": "FoundFact 查證助手"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
   "options_page": "options/index.html",
-  "permissions": ["sidePanel", "storage"],
-  "host_permissions": [
-    "*://*.facebook.com/*", "*://*.threads.com/*", "*://*.threads.net/*",
-    "http://127.0.0.1/*", "http://localhost/*", "https://*.run.app/*", "https://foundfact.infominer.io/*"
+  "permissions": [
+    "sidePanel",
+    "storage"
   ],
-  "content_scripts": [{
-    "matches": ["*://*.facebook.com/*", "*://*.threads.com/*", "*://*.threads.net/*"],
-    "js": ["content/loader.js"],
-    "run_at": "document_idle"
-  }],
-  "web_accessible_resources": [{
-    "resources": ["content/*.js", "shared/*.js"],
-    "matches": ["*://*.facebook.com/*", "*://*.threads.com/*", "*://*.threads.net/*"]
-  }]
+  "host_permissions": [
+    "*://*.facebook.com/*",
+    "*://*.threads.com/*",
+    "*://*.threads.net/*",
+    "https://api.meta.ai/*",
+    "https://api.typesafe.ai/*",
+    "https://openrouter.ai/*",
+    "https://*.fbcdn.net/*",
+    "https://*.cdninstagram.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://*.threads.com/*",
+        "*://*.threads.net/*"
+      ],
+      "js": [
+        "content/loader.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/*.js",
+        "shared/*.js"
+      ],
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://*.threads.com/*",
+        "*://*.threads.net/*"
+      ]
+    }
+  ]
 }

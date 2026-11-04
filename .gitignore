@@ -16,3 +16,7 @@ data/teacher/*.jsonl
 *.db-shm
 *.db-wal
 data/cases.npy.meta
+
+extension/data/
+.env.*
+!.env.example

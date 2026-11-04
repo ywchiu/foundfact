@@ -11,11 +11,11 @@ Built by [LargitData 大數軟體](https://www.largitdata.com) for the Meta Glob
 (Startups track · Build for Your World).
 
 - Live demo: **https://foundfact.infominer.io**
-- Demo video (3 min): _TBD_
+- Demo video (2:21): **https://youtu.be/v88sLQ7WtPA**
 
 ## The problem
 
-In Taiwan, a large share of fraud starts in the social feed. Typical lures are:
+Suspicious offers can appear while people scroll social feeds. Examples include:
 
 - fake celebrity investment groups, where a famous founder "gives away books" if you add a LINE account;
 - "work from home, NT$290/hour, DM me" job posts;
@@ -29,58 +29,26 @@ returning a verdict.
 
 ## How it works
 
-```
- Facebook / Threads feed                             FoundFact backend (FastAPI, one container)
-┌──────────────────────────┐   visible posts (batched)  ┌───────────────────────────────────────────┐
-│ content script            │ ─────────────────────────▶ │ /screen  — Stage 1 "System 1" (fast)      │
-│  site adapters (FB, Thr.) │                            │   provider = local | jev | muse            │
-│  Shadow-DOM red banner    │ ◀───────────────────────── │   local: hunch + EmbeddingGemma 2 student  │
-└────────────┬─────────────┘   label high / none         │          (confident "no" → no LLM call)    │
-             │ click "Why?"                              │          else → Muse as teacher             │
-┌────────────▼─────────────┐                            │   jev:   TypeSafe Jev 1.14 (OpenRouter)    │
-│ Chrome Side Panel         │   SSE: agent steps         │   muse:  Muse, json_schema, minimal effort │
-│  live agent steps          │ ◀───────────────────────── │                                             │
-│  sourced report            │ ─────────────────────────▶ │ /verify  — Stage 2 "System 2" (Muse agent) │
-└──────────────────────────┘   post text + image URLs   │   1 read images, copy their text (vision)  │
-                                                         │   2 extract checkable claims               │
- Web app (/) — paste a post or a                         │   3 match 137 known cases; check links    │
- screenshot, same report                                 │   4 Muse web_search per claim             │
-                                                         │   5 judge each claim against evidence     │
-                                                         │   6 conclude: risk, scam type, actions    │
-                                                         └───────────────────────────────────────────┘
-```
+The **standalone extension (0.2.0)** calls the user's model providers directly. It does not call the FoundFact backend.
 
-- **Known fraud links come first.**
-  - Short links (reurl.cc, bit.ly, lihi…) are resolved to their final URL on the server, using HEAD requests
-    with a 3 s timeout. Nothing is rendered.
-  - The final host is looked up in 115,585 domains that Taiwan's National Police Agency suspended for fraud.
-  - A hit is flagged in under 1 ms with no model call, and the banner names the domain.
-  - The list comes from data.gov.tw datasets [176455](https://data.gov.tw/dataset/176455) and
-    [160055](https://data.gov.tw/dataset/160055) under the Open Government Data License v1, and is rebuilt by
-    `data/scripts/build_blocklist.py`.
-  - Free-hosting tenants (e.g. `shopeetw88.github.io`) are matched, but platforms such as `github.io` and
-    `google.com` never are.
-- **Stage 1 runs on every post, so it has to be cheap.** You choose the provider in the extension options:
-  - **local** is a [hunch](https://github.com/undrgrnd-labs/hunch) proxy over a Google EmbeddingGemma 2 student.
-    Muse taught it, and once it had learned to agree with Muse on the question "does this post show scam
-    tactics?", it began answering that question by itself. A confident local "no" (about 64% of everyday
-    posts) costs no LLM call. Every other post goes to Muse, which answers it and keeps teaching the student.
-  - **jev** is TypeSafe's Jev 1.14 System One model, which returns typed probabilities in about 0.5 s.
-  - **muse** asks Muse directly.
-- **Stage 2 runs only when a person asks for it.**
-  - The Muse agent streams each step to the side panel.
-  - Images are read first. Muse copies their visible text, so a screenshot of a text message is checked like
-    pasted text, including any URL in it. The post's own image is never counted as evidence for its claims.
-  - Every claim in the report must cite evidence the agent actually retrieved. Claims without evidence are
-    downgraded to "insufficient", never "refuted".
-  - Results are cached for 24 h. A per-IP rate limit and a daily dollar budget protect the public deployment.
-- **Scope:** this build looks for scams only. It does not judge political or news content.
+1. As a post becomes visible, its links are checked against the bundled police domain list, then Jev screens its text using the user's Jev key. There is no Muse fallback during scrolling.
+2. A high-risk result adds a red banner. Clicking **Why?** opens Chrome's native side panel and starts a Muse investigation using the user's Meta key.
+3. Muse reads the first supported image if present, extracts claims, reviews locally selected known-case candidates, searches the web, weighs evidence and returns a report. Claims without supporting evidence are marked **insufficient**.
+4. Keys stay in trusted extension-local storage. Reports are cached in extension session storage for 24 hours. Optional local hourly caps and provider rate limits apply; the website's per-IP quota does not apply to extension checks.
+
+The **public website** remains server-backed: paste text or upload a screenshot at https://foundfact.infominer.io. Server-side matching uses the known-case store and Taiwan police domain list; its public rate limits and daily budget remain in place. The server can resolve short links; the standalone extension never follows suspect links or resolves short links. Both support English and Traditional Chinese.
+
+Reference data: **137 exposed scam cases** and **115,585 fraud websites from Taiwan police data**, from [dataset 176455](https://data.gov.tw/dataset/176455) and [160055](https://data.gov.tw/dataset/160055), under the Open Government Data License v1. The extension uses local text overlap followed by Muse to select relevant cases; this differs from the website's matcher.
+
+The repository also includes a Muse-taught smaller-model experiment. In our first test it cleared about 64% of examples on its own. It is **not switched on for the public site or the standalone extension**. Evaluation figures below describe the tested server-backed paths, not measured accuracy or latency of the new standalone extension.
+
+See [extension setup, limits and privacy](extension/BYOK.md).
 
 ### Where Muse is used
 
 | Use | API features |
 |---|---|
-| Stage-1 screening | Chat Completions with `response_format: json_schema` and `reasoning_effort: minimal` |
+| Server-side screening experiment | Chat Completions with `response_format: json_schema` and `reasoning_effort: minimal` |
 | Teacher for the local student | Same schema, called by hunch through `/teacher/v1/answer` (local-only) |
 | Reading images and screenshots | Multimodal `image_url` input; transcribes visible text, URLs included |
 | Live investigation | Responses API with the `web_search` tool, streamed |
@@ -199,20 +167,21 @@ uv run python -m hunch serve --db /path/to/fraud_detection/data/hunch.db \
 
 1. Run `bash extension/build.sh`.
 2. Open `chrome://extensions`, turn on Developer mode, click **Load unpacked**, and choose `extension/`.
-3. Open Facebook or Threads.
+3. Open extension Settings, enter a Jev key (OpenRouter or TypeSafe) and a Meta Muse key, then Save.
+4. Reload Facebook or Threads. The extension defaults to English. See [BYOK.md](extension/BYOK.md).
 
 **Run the tests:**
 
 ```bash
-(cd backend && uv run pytest -q)   # 106 tests
-npm install && npm test            # 32 tests (extension adapters, scanner, renderer)
+(cd backend && uv run pytest -q)   # 107 tests
+npm install && npm test            # 54 tests (extension, direct-provider guards, renderer)
 ```
 
 **Deploy:** the live site runs on a small VM behind nginx and Cloudflare, see [`deploy/vm.md`](deploy/vm.md). On that server known-case matching uses Jev (`CASE_MATCHER=jev`) instead of EmbeddingGemma 2. [`deploy/cloudrun.md`](deploy/cloudrun.md) is an untested alternative.
 
 ## Privacy and safety
 
-- API keys live only on the server. The extension and web app never see them.
+- Website provider keys stay on the server. Standalone extension users supply their own keys, stored locally in trusted extension contexts, not sent to social pages or FoundFact. Local storage is not encryption at rest.
 - The extension reads only the visible text, author, links and image URLs of feed posts. It never reads
   messages or account data.
 - Nothing is stored beyond a 24-hour result cache. See [`/privacy`](web/privacy.html).

@@ -9,9 +9,9 @@ Deadline: **Wed 2026-11-04 21:00 ET = Thu 2026-11-05 10:00 Taiwan.** Aim to subm
 - [x] ✋ Deployed to https://foundfact.infominer.io (a small VM, `deploy/vm.md`).
   - [x] Smoke test: /screen, /verify SSE through Cloudflare (22 s), 429 and 503 guards, /privacy.
 - [x] Fill in the live URL in `README.md`. Build `dist/foundfact.zip` with `extension/build.sh --release <URL>`.
-- [ ] Record the video from `docs/video-brief.md`. Upload it as **public**, and check the link plays in a
+- [x] Record the video from `docs/video-brief.md`. Upload it as **public**, and check the link plays in a
   logged-out browser.
-- [ ] Fill in the video link in `README.md`.
+- [x] Fill in the video link in `README.md`.
 - [ ] ✋ Make the GitHub repo **public**. Check these first:
   - `git ls-files | grep -E '\.env$|posts.jsonl|teacher/.*jsonl|hunch.db'` returns nothing;
   - `git log -p | grep -iE 'sk-|muse_api=|openrouter_key='` returns nothing;

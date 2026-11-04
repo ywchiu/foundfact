@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as fb from "../content/fb.js";
 import { createScanner } from "../content/scanner.js";
 import { mountBanner, unmountBanner, hasBanner } from "../content/banner.js";
@@ -9,6 +9,7 @@ import { dirname, join } from "node:path";
 const FIXTURE = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "fixtures/fb_feed.html"), "utf8");
 
 beforeEach(() => { document.body.innerHTML = FIXTURE; });
+afterEach(() => { vi.useRealTimers(); });
 
 describe("fb adapter", () => {
   it("finds one root per post and ignores comment articles", () => {
@@ -41,7 +42,7 @@ function makeScanner(screenFn) {
   return createScanner(fb, screenFn, {
     mount: (el, r) => mountBanner(el, r, "zh", () => {}),
     unmount: unmountBanner,
-  }, { batchMs: 0 });
+  }, { batchMs: 0, isVisible: () => true });
 }
 
 describe("scanner", () => {
@@ -62,6 +63,48 @@ describe("scanner", () => {
     await s.scan();
     const a = fb.findPosts(document)[0];
     expect(a.querySelectorAll(".vf-host").length).toBe(1);
+    expect(screenFn).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not requeue posts while their response is pending", async () => {
+    let release;
+    const gate = new Promise(resolve => { release = resolve; });
+    const screenFn = vi.fn(async posts => { await gate; return posts.map(p => HIGH(p.id)); });
+    const s = makeScanner(screenFn);
+    const first = s.scan();
+    await Promise.resolve();
+    const second = s.scan();
+    release();
+    await Promise.all([first, second]);
+    expect(screenFn).toHaveBeenCalledTimes(1);
+    s.stop();
+  });
+
+  it("waits through server cooldown despite repeated DOM-triggered scans", async () => {
+    vi.useFakeTimers();
+    const screenFn = vi.fn()
+      .mockRejectedValueOnce(Object.assign(new Error("HTTP 429"), { retryAfterMs: 60000 }))
+      .mockImplementation(async posts => posts.map(p => HIGH(p.id)));
+    const s = makeScanner(screenFn);
+    await s.scan();
+    await s.scan(); await s.scan();
+    expect(screenFn).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(59999);
+    expect(screenFn).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(screenFn).toHaveBeenCalledTimes(2);
+    expect(hasBanner(fb.findPosts(document)[0])).toBe(true);
+    s.stop();
+  });
+
+  it("stops an already scheduled retry when disabled", async () => {
+    vi.useFakeTimers();
+    const screenFn = vi.fn(async () => { throw new Error("offline"); });
+    const s = makeScanner(screenFn);
+    await s.scan();
+    s.stop();
+    await vi.advanceTimersByTimeAsync(300000);
+    await s.scan();
     expect(screenFn).toHaveBeenCalledTimes(1);
   });
 
@@ -92,6 +135,7 @@ describe("scanner", () => {
   it("survives a failing screen call", async () => {
     const s = makeScanner(async () => { throw new Error("offline"); });
     await expect(s.scan()).resolves.not.toThrow();
+    s.stop();
   });
 });
 
@@ -127,4 +171,17 @@ describe("banner", () => {
     mountBanner(el, hit, "en", () => {});
     expect(el.querySelector(".vf-host").shadowRoot.textContent).toContain("Link evil-invest.com is on Taiwan police's fraud-site list");
   });
+});
+
+it("screens a post only after it becomes visible while scrolling", async () => {
+  vi.useFakeTimers();
+  const posts = fb.findPosts(document); let visible = new Set([posts[0]]);
+  const screenFn = vi.fn(async ps => ps.map(p => NONE(p.id)));
+  const s = createScanner(fb, screenFn, { mount() {}, unmount() {} }, { batchMs: 0, isVisible: el => visible.has(el) });
+  s.start(); await s.scan();
+  expect(screenFn.mock.calls.flatMap(([ps]) => ps)).toHaveLength(1);
+  visible = new Set([posts[1]]); window.dispatchEvent(new Event("scroll"));
+  await vi.advanceTimersByTimeAsync(200);
+  expect(screenFn.mock.calls.flatMap(([ps]) => ps)).toHaveLength(2);
+  s.stop();
 });

@@ -75,7 +75,7 @@ class ScreenRequest(BaseModel):
 
 def create_app(services: Services | None = None) -> FastAPI:
     app = FastAPI(title="FoundFact")
-    app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+    app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["Retry-After"])
     holder: dict[str, Services] = {}
 
     def svc() -> Services:
@@ -97,8 +97,9 @@ def create_app(services: Services | None = None) -> FastAPI:
     async def screen(req: ScreenRequest, request: Request):
         s = svc()
         ip = client_ip(request)
-        if not all(s.screen_limiter.check(ip) for _ in req.posts):
-            return JSONResponse({"error": "rate_limited"}, status_code=429)
+        if not s.screen_limiter.check(ip, cost=len(req.posts)):
+            return JSONResponse({"error": "rate_limited"}, status_code=429,
+                                headers={"Retry-After": str(s.screen_limiter.retry_after(ip, cost=len(req.posts)))})
         paid = s.budget.allow(spent_usd(s))  # over budget: blocklist + rules only, no model calls
         results = await asyncio.gather(*(s.screener.screen_post(p, req.provider, paid=paid) for p in req.posts))
         return {"results": list(results)}
@@ -112,7 +113,8 @@ def create_app(services: Services | None = None) -> FastAPI:
         cached = s.cache.get(key)
         if cached is None:
             if not s.limiter.check(client_ip(request)):
-                return JSONResponse({"error": "rate_limited"}, status_code=429)
+                return JSONResponse({"error": "rate_limited"}, status_code=429,
+                                    headers={"Retry-After": str(s.limiter.retry_after(client_ip(request)))})
             if not s.budget.allow(spent_usd(s)):
                 return JSONResponse({"error": "budget_exhausted"}, status_code=503)
 
