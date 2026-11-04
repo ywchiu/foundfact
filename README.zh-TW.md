@@ -8,6 +8,7 @@
 
 - 線上試用：**https://foundfact.infominer.io**（可以貼文字，也可以直接貼截圖）
 - 示範影片（2:21）：**https://youtu.be/v88sLQ7WtPA**
+- 插件安裝包：[下載 0.2.0](https://github.com/ywchiu/foundfact/releases/tag/v0.2.0)
 
 ## 要解決的問題
 

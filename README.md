@@ -12,6 +12,7 @@ Built by [LargitData 大數軟體](https://www.largitdata.com) for the Meta Glob
 
 - Live demo: **https://foundfact.infominer.io**
 - Demo video (2:21): **https://youtu.be/v88sLQ7WtPA**
+- Extension ZIP: [download 0.2.0](https://github.com/ywchiu/foundfact/releases/tag/v0.2.0)
 
 ## The problem
 
