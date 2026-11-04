@@ -1,44 +1,20 @@
-# Meta Global AI Developer Hackathon — submission checklist
+# Meta Global AI Developer Hackathon — submitted
 
-Deadline: **Wed 2026-11-04 21:00 ET = Thu 2026-11-05 10:00 Taiwan.** Aim to submit by 2026-11-05 08:00 TW.
+Completed on 2026-11-05 Taiwan time before the 10:00 submission deadline.
 
-**Before the deadline (✋ = needs David's OK first):**
+- Track: **Startups Track**; theme: **Build for Your World**.
+- Team: **LargitData — FoundFact** (David Chiu).
+- Live application: https://foundfact.infominer.io
+- Public demo: https://youtu.be/v88sLQ7WtPA — 2:20.7, 1080p, English narration and captions.
+- Public MIT repository: https://github.com/ywchiu/foundfact
+- Standalone extension: [v0.2.0 release](https://github.com/ywchiu/foundfact/releases/tag/v0.2.0).
 
-- [x] Test split eval run → `eval/results/meta.md`. This waits on the `data/eval/REVIEW.md` sign-off. After
-  the run, copy the numbers into the README and the video's closing card.
-- [x] ✋ Deployed to https://foundfact.infominer.io (a small VM, `deploy/vm.md`).
-  - [x] Smoke test: /screen, /verify SSE through Cloudflare (22 s), 429 and 503 guards, /privacy.
-- [x] Fill in the live URL in `README.md`. Build `dist/foundfact.zip` with `extension/build.sh --release <URL>`.
-- [x] Record the video from `docs/video-brief.md`. Upload it as **public**, and check the link plays in a
-  logged-out browser.
-- [x] Fill in the video link in `README.md`.
-- [ ] ✋ Make the GitHub repo **public**. Check these first:
-  - `git ls-files | grep -E '\.env$|posts.jsonl|teacher/.*jsonl|hunch.db'` returns nothing;
-  - `git log -p | grep -iE 'sk-|muse_api=|openrouter_key='` returns nothing;
-  - the README "Built during the hackathon vs. pre-existing" section is accurate.
-- [ ] Submission form (fields as on the CV submit page, checked 2026-11-03; * = required):
-  - [ ] Team Name* and Team Members (list everyone who worked on it)
-  - [ ] Track*: **Startups Track**
-  - [ ] Problem statement*: **Build for Your World**
-  - [ ] Project Description*. There is no live-site field, so put https://foundfact.infominer.io and the
-    extension install steps here, plus what was built during the hackathon.
-  - [ ] Public GitHub Repository*
-  - [ ] 3-Minute Demo Video*
-  - [ ] Describe your use of Meta products to build the submitted project*
-  - [ ] Why are Meta's models important to your solution?*
-  - [ ] Optional: X post link (Most Viral), partner feedback
-  - [ ] Survey*: how likely to build with Meta Model API; overall opinion of Meta Model API
-  - [ ] Optional survey: recommend Meta Model API / Muse Code (0-5), biggest obstacle, comparison with other
-    models, what matters most, switching cost, what would stop production use
-  - [ ] Media consent checkbox (Meta and CV may publish the submitted materials)
-- [ ] Post on X with the video and repo link, tagging the hackathon (Most Viral prize). ✋ David posts from
-  his own account.
-- [ ] Optional: Chrome Web Store submission (`docs/store-listing.md`). ✋ Needs David's developer account. Review
-  takes days, so the hackathon submission does not depend on it.
+The submission was created through Cerebral Valley and reopened using View Submission. The saved team, track, theme, description, Meta-use explanation, model-importance explanation, GitHub URL, video URL and required consent were verified. Owner-only confirmation records are retained in the local delivery folder, rather than published here.
 
-**Content rules (Meta):**
+YouTube's upload checks reported no copyright or community-guidelines issues. Public 1080p media and English subtitles were verified anonymously, and a short media segment decoded successfully without authentication or cookies. The two READMEs contain the public demo link.
 
-- [ ] No political, election or war content in the repo demo data, the video, screenshots or the live site
-  examples.
-- [ ] The web app examples are scam-only: SMS, investment invite, fake customer service.
-- [ ] Not "basic RAG": the agent does live web search plus claim-level verdicts that require evidence.
+The video shows a genuine English Threads warning and native side-panel investigation, plus screenshot verification on the live English website. Private author details are blurred. The cartoon opening is labelled an illustrated scenario. Waiting portions were removed by cuts; product footage was not sped up. The held-out 16-post test is labelled a small indicative test. New standalone-extension performance is not inferred from the older server-path measurements.
+
+The extension calls Jev and Meta Muse directly with the user's own keys, and does not use FoundFact's backend. The public website retains its server-side limits. Scoped changes passed 54 JavaScript tests and 107 backend tests; direct Jev/Muse behavior was also checked live. The website atomic-batch limiter fix was deployed with health and limiter checks.
+
+Optional X / Most Viral and Chrome Web Store submissions were not made; neither is required for this entry. No claim of Chrome Web Store availability or Muse Code use is made.
