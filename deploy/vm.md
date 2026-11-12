@@ -37,7 +37,7 @@ Server-only files (`.env`, `api.log`, `.backups/`, `*.bak-*`, `data/cases.npy*`)
 - `HUNCH_URL=`
 - `CASE_MATCHER=jev`
 - `DAILY_BUDGET_USD=15`
-- `VERIFY_PER_IP_HOUR=10`
+- `VERIFY_PER_IP_HOUR=3` (10 until 2026-11-12)
 
 ## Origin lock (after the final review)
 
