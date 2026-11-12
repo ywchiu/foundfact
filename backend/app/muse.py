@@ -12,7 +12,9 @@ from .config import Settings
 from .linkcheck import is_public_url
 from .models import Evidence
 
-PRICE_IN, PRICE_OUT, PRICE_SEARCH = 1.25e-6, 4.25e-6, 2.5e-3
+# USD per token (input, output), list price for prompts under 200k tokens; inputs are capped far below that.
+TOKEN_PRICES = {"muse-spark-1.3": (1.25e-6, 4.25e-6), "muse-ember-1.0": (0.10e-6, 0.50e-6)}
+PRICE_SEARCH = 2.5e-3
 MD = re.compile(r"\*\*|__|`|^\s*[*\-•]\s+|^#+\s*", re.M)
 LANG_HINT = {"zh": "請用繁體中文回答。", "en": "Answer in English."}
 
@@ -25,6 +27,8 @@ class MuseClient:
     def __init__(self, settings: Settings, timeout: float = 30.0):
         self.s = settings
         self.spent_usd = 0.0
+        # Unknown models bill at the dearest known rate so the daily budget errs on the safe side.
+        self._price_in, self._price_out = TOKEN_PRICES.get(settings.muse_model, max(TOKEN_PRICES.values()))
         self._timeout = timeout
         self._headers = {"Authorization": f"Bearer {settings.muse_api}"}
 
@@ -33,7 +37,7 @@ class MuseClient:
         u = usage or {}
         tin = u.get("input_tokens", u.get("prompt_tokens", 0)) or 0
         tout = u.get("output_tokens", u.get("completion_tokens", 0)) or 0
-        self.spent_usd += tin * PRICE_IN + tout * PRICE_OUT + searches * PRICE_SEARCH
+        self.spent_usd += tin * self._price_in + tout * self._price_out + searches * PRICE_SEARCH
 
     async def _post(self, path: str, body: dict, timeout: float | None = None) -> dict:
         last = None

@@ -118,3 +118,14 @@ async def test_vision_read_passes_data_url_and_returns_text(monkeypatch):
     assert out == {"description": "a parcel notice", "text": "Update at https://x.cc"}
     assert seen["images"] == ["data:image/png;base64,AAAA"]
     assert set(seen["schema"]["required"]) == {"description", "text"}
+
+
+@pytest.mark.parametrize("model,expected", [
+    ("muse-ember-1.0", 1_000_000 * 0.10e-6 + 1_000_000 * 0.50e-6),
+    ("muse-spark-1.3", 1_000_000 * 1.25e-6 + 1_000_000 * 4.25e-6),
+    ("muse-future-9", 1_000_000 * 1.25e-6 + 1_000_000 * 4.25e-6),  # unknown model: bill at the dearest known rate
+])
+def test_charge_uses_the_configured_models_token_price(model, expected):
+    m = MuseClient(Settings(_env_file=None, muse_api="k", muse_model=model))
+    m._charge({"input_tokens": 1_000_000, "output_tokens": 1_000_000})
+    assert m.spent_usd == pytest.approx(expected)
