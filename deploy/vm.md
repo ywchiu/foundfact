@@ -15,16 +15,24 @@ The public site runs on a 2 vCPU / 4 GB Ubuntu VM shared with other services, wi
 
 Update:
 
+`/webapps/foundfact` is a git checkout of this repo (`main`). It pushes with a repo-scoped deploy key
+(`~/.ssh/foundfact_deploy`, remote `github-foundfact:ywchiu/foundfact.git`). Change, commit and push there,
+or pull a change pushed elsewhere, then restart:
+
 ```bash
-rsync -az --delete --exclude .venv --exclude __pycache__ --exclude tests backend/ HOST:/webapps/foundfact/backend/
-rsync -az --delete shared web HOST:/webapps/foundfact/
-rsync -az data/cases.jsonl data/blocklist.tsv HOST:/webapps/foundfact/data/
-ssh HOST 'sudo systemctl restart foundfact'
+cd /webapps/foundfact
+git pull --ff-only                      # or: edit, git commit, git push
+(cd backend && uv sync)                 # only when pyproject.toml or uv.lock changed
+sudo systemctl restart foundfact
 ```
+
+Server-only files (`.env`, `api.log`, `.backups/`, `*.bak-*`, `data/cases.npy*`) are ignored through
+`.git/info/exclude` and never committed.
 
 `/webapps/foundfact/.env` (mode 600) holds:
 
 - `MUSE_API`
+- `MUSE_MODEL=muse-ember-1.0` (since 2026-11-12; the code default is `muse-spark-1.3`)
 - `OPENROUTER_KEY`
 - `HUNCH_URL=`
 - `CASE_MATCHER=jev`
